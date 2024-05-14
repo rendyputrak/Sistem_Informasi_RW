@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/beranda', function () {
-//     return view('beranda');
-// });
+// Routing untuk beranda
 Route::get('/', function () {
-    return view('landing');
+    return view('beranda');
 });
 
