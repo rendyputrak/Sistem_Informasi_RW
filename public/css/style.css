@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --background-color: rgba(0, 152, 217, 1);
+  --text-color: #525252;
+}
+body {
+  background-color: #f7f7f7;
+  font-family: 'Poppins', sans-serif;
+}
+.navbar {
+  background-color: var(--background-color);
+  height: 90px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.navbar_title {
+  font-size: 20px;
+  color: white;
+}
+.hero {
+  background: linear-gradient(#0098D9, #00DDDD);
+  height: 80vh;
+}
+.subHeroHeader {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+}
+.subHeroHeader .d-inline{
+  color: #DBD200;
+}
+.judul_info{
+  font-size: 24px;
+}
+.info_text{
+  font-size: 16px;
+  color: var(--text-color);
+}
+.font_hero {
+  font-size: 64px;
+  font-weight: 700;
+  color: white;
+}
+.img_hero {
+  width: 405px;
+  height: 405px;
+}
+.hero .container-fluid {
+  padding: 0 60px;
+}
+.card_ingfo {
+  background-color: white;
+  padding: 20px;
+  border-radius: 24px;
+}
+.info {
+  margin-top: -130px;
+}
+.iconWrapper {
+  width: 128px;
+  height: 128px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+}
+.iconIngfo {
+  width: 72px;
+  height: 58px;
+}
+.about_img {
+  width: 512px;
+  height: 680px;
+}
+.card_program {
+  width: 376px;
+  height: 388px;
+  padding: 20px;
+  border-radius: 20px;
+  border: none;
+}
+.card_img_program {
+  width: 100%;
+  height: 184px;
+}
+.program_kami {
+  padding: 0 68px;
+}
+.program_kami_header {
+  font-size: 36px;
+  margin: 36px 0;
+  font-weight: 700;
+}
+.info {
+  padding: 0 54px;
+}
+.primary_info {
+  margin-bottom: 80px;
+  padding: 0 68px;
+}
+.about_us {
+  margin-top: 30px !important;
+  padding: 0 68px;
+}
+.about_us {
+  padding: 0 68px;
+}
+.about_header{
+  font-size: 48px;
+  font-weight: 700;
+
+}
+.umkm {
+  padding: 0 68px;
+}
+.agenda {
+  padding: 0 68px;
+}
+.daftar_umkm{
+  margin: 48px 0;
+}
+
+.umkmHeader{
+  font-size: 36px;
+  font-weight: 700;
+  padding-top: 30px;
+}
+.umkmWrapper {
+  height: 200px;
+  background-color: #0098d9;
+  border-bottom-left-radius: 144px;
+  border-bottom-right-radius: 144px;
+}
+.card_umkm {
+  width: 400px;
+  height: 416px;
+  padding: 20px;
+
+  border-radius: 20px;
+  border: none;
+}
+.img_umkm {
+  width: 336px;
+  height: 297px;
+}
+.umkm_list {
+  padding: 0 68px;
+  margin-top: -80px;
+}
+.foto_agenda {
+  height: 160px;
+  width: 370px !important;
+}
+.agendaSub {
+  background-color: white;
+}
+.labelWrapper {
+  background-color: #0098d9;
+  width: 112px;
+  height: 40px;
+  border-radius: 16px;
+  color: white;
+}
+.labelText{
+  font-size: 16px;
+  font-weight: 700;
+}
+.agendaHeader{
+  font-size: 16px;
+  font-weight: 700;
+}
+.agendaText{
+  font-size: 20px;
+  color: var(--text-color);
+}

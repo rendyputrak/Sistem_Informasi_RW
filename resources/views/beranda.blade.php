@@ -16,7 +16,7 @@
       <span class="text-yellow-400 text-3xl font-medium leading-normal mt-24">Terkini</span>
     </div>
 
-    <img src="../img/tes.png" class="w-full xl:w-1/2 xl:absolute bottom-0 right-20">
+    {{-- <img src="../img/Logo.png" class="w-full xl:w-1/2 xl:absolute bottom-0 right-20"> --}}
   </div>
 </body>
 </html>

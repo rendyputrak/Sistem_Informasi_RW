@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Routing untuk beranda
-Route::get('/beranda', function () {
-    return view('beranda');
+// Route::get('/beranda', function () {
+//     return view('beranda');
+// });
+Route::get('/', function () {
+    return view('landing');
 });
-
 
