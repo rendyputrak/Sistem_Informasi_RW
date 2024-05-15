@@ -205,34 +205,75 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="headerAgenda">Agenda Terdekat</h3>
+                    <h3 class="headerAgenda text-center">Agenda Terdekat</h3>
                 </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <img src="{{ asset ('images/foto_agenda.png')}}" class="foto_agenda" alt="">
-                            <div class="labelMain">
-                                
-                                <div class="labelWrapper d-flex justify-content-center align-items-center">
+                <div class="col-md-12 mb-3">
+                    <div class="card shadow-lg agendaSub">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <img src="{{ asset ('images/foto_agenda.png')}}" class="foto_agenda" alt="">
+                                <div class="labelMain">
+                                    <div class="labelWrapper d-flex justify-content-center align-items-center">
                                     Label
+                                    </div>
+                                    <h3 class="labelText">Nama Acara</h3>
                                 </div>
-                                <h3 class="labelText">Nama Acara</h3>
+                                <div class="tempatMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                                <div class="waktuMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                                <div class="penyelenggaraMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
                             </div>
-                            <div class="tempatMain text-center">
-                                <p class="agendaHeader">Tempat</p>
-                                <h3 class="agendaText">Tempatnya</h3>
-                            </div>
-                            <div class="waktuMain text-center">
-                                 <p class="agendaHeader">Tempat</p>
-                                <h3 class="agendaText">Tempatnya</h3>
-                            </div>
-                            <div class="penyelenggaraMain text-center">
-                                 <p class="agendaHeader">Tempat</p>
-                                <h3 class="agendaText">Tempatnya</h3>
-                            </div>
+                        </div>
                     </div>
-                    
+                </div>
+                <div class="col-md-12 mb-3">
+                    <div class="card shadow-lg agendaSub">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <img src="{{ asset ('images/foto_agenda.png')}}" class="foto_agenda" alt="">
+                                <div class="labelMain">
+                                    <div class="labelWrapper d-flex justify-content-center align-items-center">
+                                    Label
+                                    </div>
+                                    <h3 class="labelText">Nama Acara</h3>
+                                </div>
+                                <div class="tempatMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                                <div class="waktuMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                                <div class="penyelenggaraMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>             
+                
+
             </div>
         </div>
     </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Hak Cipta &copy; 2024 Sistem Informasi RW - Kelompok 6</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
