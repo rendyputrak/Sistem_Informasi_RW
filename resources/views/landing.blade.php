@@ -291,6 +291,13 @@
             </div>
         </div>
     </section>
+    <section class="struktur">
+        <div class="container-fluid">
+            <div class="row">
+                <h3 class="headerStruktur text-center">Struktur Pengurus RW</h3>
+            </div>
+        </div>
+    </section>
     <footer class="footer">
         <div class="container">
             <div class="row">
