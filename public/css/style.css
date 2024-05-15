@@ -158,7 +158,6 @@ body {
 .agendaSub {
   background-color: white;
   border-radius: 24px;
-
 }
 .labelWrapper {
   background-color: #0098d9;
@@ -180,8 +179,8 @@ body {
   color: var(--text-color);
 }
 .footer {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 14px;
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
 }

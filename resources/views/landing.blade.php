@@ -258,7 +258,34 @@
                             </div>
                         </div>
                     </div>
-                </div>             
+                </div>
+                <div class="col-md-12 mb-3">
+                    <div class="card shadow-lg agendaSub">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <img src="{{ asset ('images/foto_agenda.png')}}" class="foto_agenda" alt="">
+                                <div class="labelMain">
+                                    <div class="labelWrapper d-flex justify-content-center align-items-center">
+                                    Label
+                                    </div>
+                                    <h3 class="labelText">Nama Acara</h3>
+                                </div>
+                                <div class="tempatMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                                <div class="waktuMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                                <div class="penyelenggaraMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                                    
                 
 
             </div>
