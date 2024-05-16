@@ -205,7 +205,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="headerAgenda text-center">Agenda Terdekat</h3>
+                    <h3 class="headerAgenda text-center mb-5">Agenda Terdekat</h3>
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="card shadow-lg agendaSub">
