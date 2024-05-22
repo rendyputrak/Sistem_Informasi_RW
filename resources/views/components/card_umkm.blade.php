@@ -7,15 +7,15 @@
     <div class="mt-2">
         <dl>
             <div>
-                <dt class="sr-only">Price</dt>
+                <dt class="sr-only">Kategori</dt>
 
-                <dd class="text-sm text-gray-500">$240,000</dd>
+                <dd class="text-sm text-gray-500">Jenis Kategori</dd>
             </div>
 
             <div>
                 <dt class="sr-only">Address</dt>
 
-                <dd class="font-medium">123 Wallaby Avenue, Park Road</dd>
+                <dd class="font-medium">Nama UMKM {{$umkm}}</dd>
             </div>
         </dl>
 
@@ -28,7 +28,7 @@
                 </svg>
 
                 <div class="mt-1.5 sm:mt-0">
-                    <p class="text-gray-500">Parking</p>
+                    <p class="text-gray-500">Valuasi</p>
 
                     <p class="font-medium">2 spaces</p>
                 </div>
@@ -42,7 +42,7 @@
                 </svg>
 
                 <div class="mt-1.5 sm:mt-0">
-                    <p class="text-gray-500">Bathroom</p>
+                    <p class="text-gray-500">Lokasi</p>
 
                     <p class="font-medium">2 rooms</p>
                 </div>
@@ -56,7 +56,7 @@
                 </svg>
 
                 <div class="mt-1.5 sm:mt-0">
-                    <p class="text-gray-500">Bedroom</p>
+                    <p class="text-gray-500">Pengasilan</p>
 
                     <p class="font-medium">4 rooms</p>
                 </div>

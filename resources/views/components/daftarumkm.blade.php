@@ -3,8 +3,8 @@
         <h2 class="text-4xl font-bold dark:text-w-putih text-gray-900">Daftar UMKM</h2>
     </div>
     <div class="grid-cols-3 gap-10 auto-cols-auto grid">
-        @for ($i = 0; $i < 9; $i++)
-            <x-card_umkm></x-card_umkm>
+        @for ($i = 1; $i <= 9; $i++)
+            <x-card_umkm :umkm="$i"></x-card_umkm>
         @endfor
     </div>
 </section>
