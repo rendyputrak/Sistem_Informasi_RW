@@ -1,22 +1,71 @@
-<!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
-  @include('template.script')
-</head>
+<x-htmlhead></x-htmlhead>
+<x-header></x-header>
 
-<body>
-  <div class="container min-h-screen bg-gradient-to-br from-blue-500 to-cyan-500 px-10 py-5 relative">
-    @include('template.header')
+<x-hero></x-hero>
+<x-pengumuman></x-pengumuman>
+<x-data></x-data>
+<x-tentang></x-tentang>
 
-    <div class="px-5 my-40">
-      <h1 class="text-white text-5xl font-bold leading-normal mb-28">RW 03 Bunulrejo,<br>Kec. Blimbing,<br>Kota Malang</h1>
-      <span class="text-white text-3xl font-medium leading-normal mt-24">Pengumuman<br>dan Berita</span>
-      <span class="text-yellow-400 text-3xl font-medium leading-normal mt-24">Terkini</span>
-    </div>
+<x-program></x-program>
 
-    {{-- <img src="../img/Logo.png" class="w-full xl:w-1/2 xl:absolute bottom-0 right-20"> --}}
-  </div>
-</body>
-</html>
+<x-daftarumkm></x-daftarumkm>
+
+<x-struktur></x-struktur>
+
+<x-galeri></x-galeri>
+<x-footer></x-footer>
+
+<script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+            '(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+</script>
+
+<script>
+    var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Change the icons inside the button based on previous settings
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+            '(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('hidden');
+    } else {
+        themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    var themeToggleBtn = document.getElementById('theme-toggle');
+
+    themeToggleBtn.addEventListener('click', function() {
+
+        // toggle icons inside button
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+
+        // if set via local storage previously
+        if (localStorage.getItem('color-theme')) {
+            if (localStorage.getItem('color-theme') === 'light') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            }
+
+            // if NOT set via local storage previously
+        } else {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        }
+
+    });
+</script>
+<x-htmlfoot></x-htmlfoot>

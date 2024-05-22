@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 // Routing untuk beranda
 Route::get('/', function () {
-    return view('landing');
+    return view('beranda', ['judul' => 'RW 03 Bunulrejo']);
+});
+Route::get('/landing', function () {
+    return view('landing', ['judul' => 'RW 03 Bunulrejo']);
 });
 
