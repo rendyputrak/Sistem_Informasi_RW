@@ -9,7 +9,8 @@
 <x-program></x-program>
 
 <x-daftarumkm></x-daftarumkm>
-<x-cobasection></x-cobasection>
+
+<x-struktur></x-struktur>
 
 <x-galeri></x-galeri>
 <x-footer></x-footer>

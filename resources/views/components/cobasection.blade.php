@@ -10,9 +10,9 @@
         </div>
 
         <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-w-primer/10 hover:shadow-w-primer/10"
                 href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-w-primer" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
@@ -29,9 +29,9 @@
                 </p>
             </a>
 
-            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-w-primer/10 hover:shadow-w-primer/10"
                 href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-w-primer" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
@@ -48,9 +48,9 @@
                 </p>
             </a>
 
-            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-w-primer/10 hover:shadow-w-primer/10"
                 href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-w-primer" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
@@ -67,9 +67,9 @@
                 </p>
             </a>
 
-            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-w-primer/10 hover:shadow-w-primer/10"
                 href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-w-primer" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
@@ -86,9 +86,9 @@
                 </p>
             </a>
 
-            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-w-primer/10 hover:shadow-w-primer/10"
                 href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-w-primer" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
@@ -105,9 +105,9 @@
                 </p>
             </a>
 
-            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+            <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-w-primer/10 hover:shadow-w-primer/10"
                 href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-w-primer" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
@@ -122,13 +122,6 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci
                     distinctio alias voluptatum blanditiis laudantium.
                 </p>
-            </a>
-        </div>
-
-        <div class="mt-12 text-center">
-            <a href="#"
-                class="inline-block rounded bg-pink-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-pink-700 focus:outline-none focus:ring focus:ring-yellow-400">
-                Get Started Today
             </a>
         </div>
     </div>
