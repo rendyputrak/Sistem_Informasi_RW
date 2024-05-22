@@ -75,8 +75,8 @@ body {
   height: 58px;
 }
 .about_img {
-  width: 512px;
-  height: 680px;
+  width: 100%;
+  height: 100%;
 }
 .card_program {
   width: 376px;
@@ -146,8 +146,8 @@ body {
   border: none;
 }
 .img_umkm {
-  width: 336px;
-  height: 297px;
+  width: 100%;
+  height: 200px;
 }
 .umkm_list {
   padding: 0 68px;
@@ -160,7 +160,7 @@ body {
 }
 .foto_agenda {
   height: 160px;
-  width: 370px !important;
+  width: 100% !important;
 }
 .agendaSub {
   background-color: white;
@@ -174,7 +174,7 @@ body {
   color: white;
 }
 .labelText{
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
 }
 .agendaHeader{
@@ -182,7 +182,7 @@ body {
   font-weight: 700;
 }
 .agendaText{
-  font-size: 20px;
+  font-size: 14px;
   color: var(--text-color);
 }
 .headerStruktur{
@@ -195,4 +195,74 @@ body {
   padding: 20px 0;
   text-align: center;
   font-size: 14px;
+}
+@media screen and (max-width: 1020px){
+  .font_hero{
+    font-size: 49px !important;
+  }
+  .subHeroHeader{
+    font-size: 24px !important;
+    margin-bottom: 20px;
+  }
+  .hero{
+    height: 100vh !important;
+  }
+  .img_hero{
+    width: 300px !important;
+    height: 300px !important;
+  }
+  .containerImgHero{
+    display: flex;
+    justify-content: center !important;
+  
+  }
+  .iconIngfo {
+    width: 50px;
+    height: 42px;
+  }
+  .iconWrapper {
+    width: 92px;
+    height: 92px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+  }
+  .about_img {
+    width: 100%;
+    height: 100%;
+  }
+  .card-text{
+    font-size: 12px !important;
+  }
+  .hero .container-fluid {
+    padding: 20px 30px;
+  }
+  .info {
+    padding: 0 30px;
+  }
+  .primary_info {
+
+    padding: 0 30px;
+  }
+  .about_us {
+    padding: 0 30px;
+  }
+  .program_kami {
+    padding: 0 30px;
+  }
+  .daftar_umkm{
+    margin: 10px 0;
+  }
+  .agenda {
+    padding: 0 30px;
+  }
+}
+.containerImgHero{
+  display: flex;
+  justify-content: center;
+} 
+@media screen and (max-width: 1200px) {
+  .card-text{
+    font-size: 12px !important;
+  }
+ 
 }

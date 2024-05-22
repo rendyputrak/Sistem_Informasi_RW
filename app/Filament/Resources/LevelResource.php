@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\LevelResource\Pages;
 use App\Filament\Resources\LevelResource\RelationManagers;
 use App\Models\Level;
+use App\Models\Penduduk;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Infolists\Infolist;
@@ -58,6 +59,11 @@ class LevelResource extends Resource
                 Tables\Columns\TextColumn::make('level_nama')
                 ->sortable()
                 ->searchable(),
+                Tables\Columns\TextColumn::make('Jumlah orang')
+                ->getStateUsing(function (Level $record) {
+                    return Penduduk::where('level_id', $record->level_id)->count();
+                })
+                ->sortable(),
             ])
             ->filters([
                 //

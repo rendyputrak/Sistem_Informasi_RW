@@ -10,13 +10,19 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet">
+
     <title>Sistem Informasi RW</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 </head>
 
 <body>
-
 
     <nav
         class="dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
@@ -57,6 +63,7 @@
                         <a href="#program-landing"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Program</a>
                     </li>
+
                     <li>
                         <a href="#umkm-landing"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">UMKM</a>
@@ -81,20 +88,21 @@
                     <h3 class="font_hero">RW 03 Bunulrejo, <br>
                         Kec. Blimbing, Kota Malang</h3>
                 </div>
+
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
                     <img src="{{ asset('images/Elemen.png') }}" class="img_hero" alt="">
                 </div>
             </div>
         </div>
     </section>
-    <section class="info">
+    <section class="info" id="info" data-aos="fade-in">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-3">
                     <h3 class="subHeroHeader">Pengumuman dan Berita <div class="d-inline">Terkini</div>
                     </h3>
                 </div>
-                <div class="col-3">
+                <div class="col-xl-3 mb-3">
                     <div class="card_ingfo">
                         <h3 class="judul_info">Judul Pengumuman</h3>
                         <p class="info_text">Lorem ipsum dolor sit amet consectetur. Aliquet id feugiat mi vitae nunc.
@@ -102,7 +110,7 @@
                             condimentum leo sem viverra. Cursus suspendisse aliquam.</p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-xl-3 mb-3">
                     <div class="card_ingfo">
                         <h3 class="judul_info">Judul Pengumuman</h3>
                         <p class="info_text">Lorem ipsum dolor sit amet consectetur. Aliquet id feugiat mi vitae nunc.
@@ -110,7 +118,7 @@
                             condimentum leo sem viverra. Cursus suspendisse aliquam.</p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-xl-3 mb-3">
                     <div class="card_ingfo">
                         <h3 class="judul_info">Judul Pengumuman</h3>
                         <p class="info_text">Lorem ipsum dolor sit amet consectetur. Aliquet id feugiat mi vitae nunc.
@@ -118,7 +126,6 @@
                             condimentum leo sem viverra. Cursus suspendisse aliquam.</p>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -126,7 +133,7 @@
     <section class="primary_info mt-5 ">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4 d-flex align-items-center">
+                <div class="col-md-4 d-flex align-items-center justify-content-center mb-3">
                     <div class="iconWrapper d-flex justify-content-center align-items-center">
                         <img src="{{ asset('images/Vector.png') }}" alt="" class="iconIngfo" srcset="">
                     </div>
@@ -135,7 +142,7 @@
                         <p>Jumlah Penduduk</p>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex align-items-center">
+                <div class="col-md-4 d-flex align-items-center justify-content-center mb-3">
                     <div class="iconWrapper d-flex justify-content-center align-items-center">
                         <img src="{{ asset('images/Vector.png') }}" alt="" class="iconIngfo" srcset="">
                     </div>
@@ -144,7 +151,7 @@
                         <p>Jumlah Penduduk</p>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex align-items-center">
+                <div class="col-md-4 d-flex align-items-center justify-content-center mb-3">
                     <div class="iconWrapper d-flex justify-content-center align-items-center">
                         <img src="{{ asset('images/Vector.png') }}" alt="" class="iconIngfo" srcset="">
                     </div>
@@ -225,24 +232,24 @@
                 </div>
             </div>
             <div class="row umkm_list">
-                <div class="col-md-4">
-                    <div class="card card_umkm shadow-lg">
+                <div class="col-md-4 mb-3">
+                    <div class="card card_umkm shadow-lg" style="width: 100%;">
                         <div class="card-body">
                             <h3 class="header_umkm text-center">Nama Umkm</h3>
                             <img src="{{ asset('images/anime.png') }}" alt="" class="img_umkm">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card_umkm shadow-lg">
+                <div class="col-md-4 mb-3">
+                    <div class="card card_umkm shadow-lg" style="width: 100%;">
                         <div class="card-body">
                             <h3 class="header_umkm text-center">Nama Umkm</h3>
                             <img src="{{ asset('images/anime.png') }}" alt="" class="img_umkm">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card_umkm shadow-lg">
+                <div class="col-md-4 mb-3">
+                    <div class="card card_umkm shadow-lg" style="width: 100%;">
                         <div class="card-body">
                             <h3 class="header_umkm text-center">Nama Umkm</h3>
                             <img src="{{ asset('images/anime.png') }}" alt="" class="img_umkm">
@@ -256,7 +263,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="headerAgenda text-center mb-5">Agenda Terdekat</h3>
+                    <h3 class="headerAgenda text-center">Agenda Terdekat</h3>
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="card shadow-lg agendaSub">
@@ -266,19 +273,25 @@
                                 <div class="labelWrapper d-flex justify-content-center align-items-center">
                                     Label
                                 </div>
-                                <h3 class="labelText">Nama Acara</h3>
                             </div>
-                            <div class="tempatMain text-center">
-                                <p class="agendaHeader">Tempat</p>
-                                <h3 class="agendaText">Tempatnya</h3>
+                            <div class="col-md-2">
+                                <div class="tempatMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
                             </div>
-                            <div class="waktuMain text-center">
-                                <p class="agendaHeader">Waktu</p>
-                                <h3 class="agendaText">Waktunya</h3>
+    
+                            <div class="col-md-2">
+                                <div class="waktuMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
                             </div>
-                            <div class="penyelenggaraMain text-center">
-                                <p class="agendaHeader">Penyelenggara</p>
-                                <h3 class="agendaText">Penyelenggaranya</h3>
+                            <div class="col-md-2">
+                                <div class="penyelenggaraMain text-center">
+                                    <p class="agendaHeader">Tempat</p>
+                                    <h3 class="agendaText">Tempatnya</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -335,6 +348,7 @@
                 </div>
             </div>
         </div>
+
     </section>
     <section class="struktur" id="struktur-landing">
         <div class="container-fluid mb-5">
@@ -412,5 +426,19 @@ themeToggleBtn.addEventListener('click', function() {
 });
     </script>
 </body>
+<script>
+   
+    const resizePengumuman = () =>{
+        if(window.innerWidth <= 1200){
+            document.querySelector('.headerPengumuman').classList.remove('col-3')
+            document.querySelector('.headerPengumuman').classList.add('col-12')
+        }
+        else{
+            document.querySelector('.headerPengumuman').classList.remove('col-12')
+            document.querySelector('.headerPengumuman').classList.add('col-3')
+        }
+    }
+    window.addEventListener('resize', resizePengumuman)
+</script>
 
 </html>
