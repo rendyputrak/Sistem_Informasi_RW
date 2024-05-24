@@ -1,4 +1,4 @@
-<section class="dark:bg-gray-900 px-16 pt-20 pb-8" id="tentang-section">
+<section class="dark:bg-gray-900 px-16 pt-20 pb-8 content-section" id="tentang-section">
     <div class="gap-16 items-center mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:pt-16 lg:pb-8">
         <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 class="mb-4 text-[40px] leading-[48px] tracking-tight font-black text-gray-900 dark:text-white">

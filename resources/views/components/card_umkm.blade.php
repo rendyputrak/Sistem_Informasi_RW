@@ -15,7 +15,7 @@
             <div>
                 <dt class="sr-only">Address</dt>
 
-                <dd class="font-medium">Nama UMKM {{$umkm}}</dd>
+                <dd class="font-bold mt-1 text-gray-500 dark:text-gray-400">Nama UMKM {{$umkm}}</dd>
             </div>
         </dl>
 

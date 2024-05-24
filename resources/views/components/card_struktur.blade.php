@@ -7,7 +7,7 @@
         <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             <a href="#">Nama Pengurus {{$nama}}</a>
         </h3>
-        <span class="text-gray-500 dark:text-gray-400">Ketua RW</span>
+        <span class="text-gray-500 dark:text-gray-400">Jabatan</span>
         <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, soluta?</p>
         <ul class="flex space-x-4 sm:mt-0">
             <li>

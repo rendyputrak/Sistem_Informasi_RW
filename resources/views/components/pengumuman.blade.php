@@ -1,4 +1,4 @@
-<section class="-mt-48 mb-8 flex md:flex-row gap-x-16 w-screen justify-start items-center pl-16 sm:flex-col"
+<section class="-mt-48 mb-8 flex md:flex-row gap-x-16 w-screen justify-start items-center pl-16"
     id="pengumuman-section">
     <div>
         <h3 class="text-4xl mt-6 font-extrabold text-gray-900 dark:text-w-putih leading-[56px] sm:mb-6">Berita dan

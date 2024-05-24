@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
     <title>RW 03 Bunulrejo</title>
-
 </head>
 
 <body class="bg-white dark:bg-gray-900 scroll-smooth font-primer">

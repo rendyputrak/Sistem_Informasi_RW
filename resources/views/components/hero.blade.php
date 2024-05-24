@@ -1,6 +1,6 @@
-<section class="bg-[#f1f5f9] dark:bg-gray-900 h-[calc(100vh-96px+48px)]" id="hero-section">
+<section class="bg-[#f1f5f9] dark:bg-gray-900 h-[calc(100vh-96px+48px)] content-section" id="hero-section">
     <div class=" mx-auto max-w-screen-xl text-center lg:py-12 lg:px-12">
-        <a href="#"
+        <a href="#agenda-section"
             class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-[#e2e8f0] rounded-full dark:bg-gray-800 dark:text-w-putih hover:bg-gray-200 dark:hover:bg-gray-700"
             role="alert">
             <span class="text-xs bg-w-primer rounded-full text-w-putih px-4 py-1.5 mr-3">Terdekat</span> <span
@@ -15,10 +15,11 @@
             class="mb-6 text-4xl tracking-tight leading-normal font-black text-gray-900 md:text-5xl lg:text-6xl dark:text-w-putih">
             RW 03, Kel. Bunulrejo,<br class="md:mb-4 sm:mb-1">Kec. Blimbing, Kota Malang</h1>
         <p class="mb-10 md:px-40 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Di sini, kami mengutamakan kebersamaan dan gotong royong untuk menciptakan lingkungan yang aman, nyaman, dan sejahtera bagi semua warga.</p>
+            Di sini, kami mengutamakan kebersamaan dan gotong royong untuk menciptakan lingkungan yang aman, nyaman, dan
+            sejahtera bagi semua warga.</p>
         <div class="flex flex-col mb-8 lg:mb-12 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             <a href="#tentang-section"
-                class="inline-flex justify-center items-center py-3 px-5 text-base font-semibold text-center text-w-putih rounded-lg bg-w-primer hover:bg-w-hover focus:ring-4 focus:ring-primary-300 dark:focus:ring-[#2b657d]">
+                class="inline-flex justify-center scroll-button items-center py-3 px-5 text-base font-semibold text-center text-w-putih rounded-lg bg-w-primer hover:bg-w-hover">
                 Cari Tahu
                 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="ml-2 -mr-1 w-5 h-5">
