@@ -17,6 +17,8 @@ class Pengaduan extends Model
         'judul_pengaduan',
         'isi_pengaduan',
         'tanggal_pengaduan',
+        'foto',
+        'status_pengaduan',
         'pengirim_id',
     ];
 
