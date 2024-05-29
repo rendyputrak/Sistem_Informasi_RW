@@ -3,15 +3,16 @@
 namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\PengaduanResource\Pages;
-use App\Filament\User\Resources\PengaduanResource\RelationManagers;
 use App\Models\Pengaduan;
 use Filament\Forms;
+use Filament\Forms\Components\Builder;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Illuminate\Support\Facades\Auth;
 
 class PengaduanResource extends Resource
 {
@@ -22,12 +23,31 @@ class PengaduanResource extends Resource
     protected static ?string $label = 'Pengaduan';
     protected static ?string $pluralLabel = 'Pengaduan';
     protected static ?string $navigationGroup = 'Pengaduan';
+    protected static ?string $slug = 'pengaduan';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nama_pengirim')
+                    ->default(fn () => Auth::user()->name)
+                    ->disabled()
+                    ->required(),
+                Forms\Components\TextInput::make('email_pengirim')
+                    ->default(fn () => Auth::user()->email)
+                    ->disabled()
+                    ->required(),
+                Forms\Components\TextInput::make('judul_pengaduan')
+                    ->required(),
+                Forms\Components\Textarea::make('isi_pengaduan')
+                    ->required(),
+                Forms\Components\DatePicker::make('tanggal_pengaduan')
+                    ->default(now())
+                    ->disabled(),
+                Forms\Components\FileUpload::make('foto')
+                    ->image()
+                    ->directory('images/pengaduan')
+                    ->required()
             ]);
     }
 
@@ -35,26 +55,40 @@ class PengaduanResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('judul_pengaduan')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('isi_pengaduan')
+                    ->searchable(),
+                TextColumn::make('tanggal_pengaduan')
+                    ->sortable()
+                    ->searchable(),
+                ImageColumn::make('foto')
+                    ->label('Foto'),
             ])
             ->filters([
-                //
+                // No filters for now
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                // User can edit only their own records
+                Tables\Actions\EditAction::make()
+                    ->visible(fn (Pengaduan $record) => $record->email_pengirim === Auth::user()->email),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                // No bulk actions for users
+            ])
+            ->defaultSort('tanggal_pengaduan', 'desc')
+            ->query(function (Builder $query) {
+                // Filter the records based on the logged-in user
+                return $query->where('email_pengirim', Auth::user()->email);
+            });
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            // No relations for now
         ];
     }
 

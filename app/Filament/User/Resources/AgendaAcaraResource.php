@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -35,19 +36,33 @@ class AgendaAcaraResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('nama_acara')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('tanggal')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('waktu')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('lokasi')
+                    ->searchable(),
+                TextColumn::make('deskripsi')
+                    ->searchable(),
+                TextColumn::make('admin.nama')
+                    ->label('Pengunggah'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
@@ -62,9 +77,9 @@ class AgendaAcaraResource extends Resource
     {
         return [
             'index' => Pages\ListAgendaAcaras::route('/'),
-            'create' => Pages\CreateAgendaAcara::route('/create'),
+            // 'create' => Pages\CreateAgendaAcara::route('/create'),
             'view' => Pages\ViewAgendaAcara::route('/{record}'),
-            'edit' => Pages\EditAgendaAcara::route('/{record}/edit'),
+            // 'edit' => Pages\EditAgendaAcara::route('/{record}/edit'),
         ];
     }
 }
