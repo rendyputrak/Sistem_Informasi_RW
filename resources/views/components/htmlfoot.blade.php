@@ -191,13 +191,13 @@
         });
     });
 </script> --}}
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const menuItems = document.querySelectorAll('.navbar-menu-item');
         const logo = document.getElementById('logo');
         const sections = document.querySelectorAll('.content-section');
         const lastSection = sections[sections.length - 1];
+        const footer = document.querySelector('footer');
 
         let isScrollingByClick = false;
 
@@ -263,6 +263,9 @@
         logo.addEventListener('click', (e) => {
             e.preventDefault();
             isScrollingByClick = true;
+
+            removeActiveClass(); // Hapus semua kelas aktif saat logo diklik
+
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -282,7 +285,7 @@
         const observer = new IntersectionObserver((entries) => {
             if (!isScrollingByClick) {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && entry.target !== footer) {
                         const id = entry.target.getAttribute('id');
                         const activeLink = document.querySelector(`a[href="#${id}"]`);
                         if (activeLink) {
