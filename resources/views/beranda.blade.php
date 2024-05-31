@@ -15,6 +15,9 @@
 <x-struktur></x-struktur>
 
 <x-galeri></x-galeri>
+
+<x-formpengaduan></x-formpengaduan>
+
 <x-footer></x-footer>
 
 <script>
