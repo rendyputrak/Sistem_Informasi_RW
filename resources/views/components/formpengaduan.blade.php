@@ -1,4 +1,4 @@
-<section class="dark:bg-gray-900 px-16 pt-20 pb-8 mt-24 content-section" id="pengaduan-section">
+<section class="dark:bg-gray-900 px-16 pt-20 pb-8 mt-32 content-section" id="pengaduan-section">
     <div class="max-w-screen-xl">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-20">
             <div class="bg-gray-900 md:col-span-4 text-white">
