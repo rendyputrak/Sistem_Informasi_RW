@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UMKMResource;
 use App\Models\Umkm;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class UMKMController extends Controller

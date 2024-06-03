@@ -23,7 +23,7 @@
                         <a href="#">
                             <h5 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">${pengumuman.judul}</h5>
                         </a>
-                        <p class="font-normal text-base text-gray-700 dark:text-gray-400 mb-7">
+                        <p class="font-normal text-base text-gray-700 dark:text-gray-400 mb-7" style="word-break: break-word; overflow-wrap: break-word;">
                             ${pengumuman.isi.length > 272 ? pengumuman.isi.substring(0, 272) + '...' : pengumuman.isi}
                         </p>
                         <a href="#"

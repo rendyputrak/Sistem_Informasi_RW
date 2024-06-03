@@ -6,14 +6,14 @@
 
     <div class="mt-2">
         <dl>
-            <div>
+            {{-- <div>
                 <dt class="sr-only">Kategori</dt>
 
                 <dd class="text-sm text-gray-500">Jenis Kategori</dd>
-            </div>
+            </div> --}}
 
             <div>
-                <dt class="sr-only">Address</dt>
+                {{-- <dt class="sr-only">Address</dt> --}}
 
                 <dd class="font-bold mt-1 text-gray-500 dark:text-gray-400">Nama UMKM {{$umkm}}</dd>
             </div>
@@ -28,13 +28,13 @@
                 </svg>
 
                 <div class="mt-1.5 sm:mt-0">
-                    <p class="text-gray-500">Valuasi</p>
+                    <p class="text-gray-500">Alamat</p>
 
                     <p class="font-medium">2 spaces</p>
                 </div>
             </div>
 
-            <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+            {{-- <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                 <svg class="size-4 text-w-primer" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -46,9 +46,9 @@
 
                     <p class="font-medium">2 rooms</p>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+            {{-- <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                 <svg class="size-4 text-w-primer" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -60,7 +60,7 @@
 
                     <p class="font-medium">4 rooms</p>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </a>
