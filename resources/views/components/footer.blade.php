@@ -9,9 +9,9 @@
                 <li>
                     <a href="#tentang-section" class="hover:underline hover:text-w-primer me-4 md:me-6">Tentang</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#program-section" class="hover:underline hover:text-w-primer me-4 md:me-6">Program</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="#umkm-section" class="hover:underline hover:text-w-primer me-4 md:me-6">UMKM</a>
                 </li>

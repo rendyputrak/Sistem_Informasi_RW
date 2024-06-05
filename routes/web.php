@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MetodeSAWController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('beranda', ['judul' => 'RW 03 Bunulrejo']);
 });
-Route::get('/landing', function () {
-    return view('landing', ['judul' => 'RW 03 Bunulrejo']);
-});
+// Route::get('/landing', function () {
+//     return view('landing', ['judul' => 'RW 03 Bunulrejo']);
+// });
+
+// Routing untuk SPK
+Route::get('/saw', [MetodeSAWController::class, 'index'])->name('saw.index');
 
