@@ -26,7 +26,7 @@ class UserPanelProvider extends PanelProvider
             ->id('user')
             ->path('user')
             ->login()
-            ->registration()
+            // ->registration()
             ->profile()
             ->colors([
                 'danger' => Color::Red,

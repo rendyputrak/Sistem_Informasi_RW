@@ -10,10 +10,10 @@ class ListAgendaAcaras extends ListRecords
 {
     protected static string $resource = AgendaAcaraResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\CreateAction::make(),
-        ];
-    }
+    // protected function getHeaderActions(): array
+    // {
+    //     return [
+    //         Actions\CreateAction::make(),
+    //     ];
+    // }
 }

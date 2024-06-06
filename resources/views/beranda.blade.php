@@ -6,17 +6,17 @@
 <x-data></x-data>
 <x-tentang></x-tentang>
 
-<x-program></x-program>
+{{-- <x-program></x-program> --}}
 
 <x-daftarumkm></x-daftarumkm>
 
-<x-agenda></x-agenda>
+{{-- <x-agenda></x-agenda> --}}
 
 <x-struktur></x-struktur>
 
 <x-galeri></x-galeri>
 
-<x-formpengaduan></x-formpengaduan>
+{{-- <x-formpengaduan></x-formpengaduan> --}}
 
 <x-footer></x-footer>
 

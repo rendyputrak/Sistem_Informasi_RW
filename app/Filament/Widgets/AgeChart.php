@@ -9,6 +9,7 @@ use App\Models\Penduduk;
 class AgeChart extends ChartWidget
 {
     protected static ?string $heading = 'Persebaran Penduduk Berdasarkan Usia';
+    protected static ?string $maxHeight = '200px';
 
     protected function getData(): array
     {

@@ -30,14 +30,22 @@ class UmkmResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_umkm'),
-                Forms\Components\TextInput::make('alamat'),
-                Forms\Components\TextArea::make('deskripsi'),
+                Forms\Components\TextInput::make('nama_umkm')->columnSpan(2)
+                ->label('Nama UMKM'),
+                Forms\Components\TextInput::make('alamat')->columnSpan(2),
                 Forms\Components\Select::make('penduduk_id')
                 ->options(function(){
                     return \App\Models\Penduduk::pluck('penduduk_id' , 'penduduk_id');
                 })
-                ->label('ID Penduduk'),
+                ->relationship(name: 'penduduk', titleAttribute: 'nama')
+                ->searchable()
+                ->label('Pemilik'),
+                Forms\Components\MarkdownEditor::make('deskripsi')->columnSpan(2)
+                ->disableToolbarButtons(['attachFiles', 'table', 'blockquote', 'codeBlock']),
+                Forms\Components\FileUpload::make('foto')->columnSpan(2)
+                ->image()
+                ->directory('foto-umkm')
+                ->required(),
             ]);
     }
 
@@ -46,10 +54,13 @@ class UmkmResource extends Resource
         return $infolist
             ->schema([
                 Components\Section::make()->schema([
-                    Components\Grid::make(3)->schema([
+                    Components\Grid::make(2)->schema([
                         Components\TextEntry::make('nama_umkm'),
                         Components\TextEntry::make('alamat'),
                         Components\TextEntry::make('deskripsi'),
+                        Components\TextEntry::make('penduduk_id'),
+                        Components\ImageEntry::make('foto')
+                        ->disk('public'),
                     ])
                 ])
             ]);
@@ -66,6 +77,11 @@ class UmkmResource extends Resource
                 ->searchable(),
                 Tables\Columns\TextColumn::make('deskripsi')
                 ->searchable(),
+                Tables\Columns\TextColumn::make('penduduk.nama')
+                ->searchable()
+                ->label('Pemilik'),
+                Tables\Columns\ImageColumn::make('foto')
+
             ])
             ->filters([
                 //

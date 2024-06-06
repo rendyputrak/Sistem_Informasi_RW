@@ -35,7 +35,8 @@ class GaleriResource extends Resource
                 Forms\Components\FileUpload::make('foto')
                 ->image()
                 ->directory('images/galeri')
-                ->columnSpanFull(),
+                ->columnSpanFull()
+                ->required(),
                 Forms\Components\DatePicker::make('tanggal_upload'),
                 Forms\Components\Select::make('admin_id')
                 ->relationship(name: 'admin', titleAttribute: 'nama')

@@ -10,11 +10,11 @@ class EditAgendaAcara extends EditRecord
 {
     protected static string $resource = AgendaAcaraResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
-        ];
-    }
+    // protected function getHeaderActions(): array
+    // {
+    //     return [
+    //         Actions\ViewAction::make(),
+    //         Actions\DeleteAction::make(),
+    //     ];
+    // }
 }

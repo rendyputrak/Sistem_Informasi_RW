@@ -112,10 +112,10 @@
                     <a href="#tentang-section"
                         class="block py-3 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-w-hover md:p-0 md:dark:hover:text-w-hover dark:text-w-putih dark:hover:bg-gray-700 dark:hover:text-w-putih md:dark:hover:bg-transparent dark:border-gray-700 navbar-menu-item">Tentang</a>
                 </li>
-                <li class="px-4 py-2 rounded-md">
+                {{-- <li class="px-4 py-2 rounded-md">
                     <a href="#program-section"
                         class="block py-3 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-w-hover md:p-0 md:dark:hover:text-w-hover dark:text-w-putih dark:hover:bg-gray-700 dark:hover:text-w-putih md:dark:hover:bg-transparent dark:border-gray-700 navbar-menu-item">Program</a>
-                </li>
+                </li> --}}
                 <li class="px-4 py-2 rounded-md">
                     <a href="#umkm-section"
                         class="block py-3 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-w-hover md:p-0 md:dark:hover:text-w-hover dark:text-w-putih dark:hover:bg-gray-700 dark:hover:text-w-putih md:dark:hover:bg-transparent dark:border-gray-700 navbar-menu-item">UMKM</a>

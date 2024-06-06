@@ -9,6 +9,7 @@ use App\Models\Penduduk;
 class GenderChart extends ChartWidget
 {
     protected static ?string $heading = 'Persebaran Penduduk Berdasarkan Jenis Kelamin';
+    protected static ?string $maxHeight = '200px';
 
     protected function getData(): array
     {

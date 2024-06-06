@@ -1,4 +1,4 @@
-<div
+{{-- <div
     class="min-w-80 p-6 h-[376px] bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700 font-primer box-border overflow-hidden">
     <a href="#">
         <h5 class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4">Judul Pengumuman {{$angka}}</h5>
@@ -15,4 +15,4 @@
                 d="M1 5h12m0 0L9 1m4 4L9 9" />
         </svg>
     </a>
-</div>
+</div> --}}

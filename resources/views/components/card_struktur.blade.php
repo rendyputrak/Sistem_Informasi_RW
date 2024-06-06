@@ -9,7 +9,7 @@
         </h3>
         <span class="text-gray-500 dark:text-gray-400">Jabatan</span>
         <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, soluta?</p>
-        <ul class="flex space-x-4 sm:mt-0">
+        {{-- <ul class="flex space-x-4 sm:mt-0">
             <li>
                 <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -45,6 +45,6 @@
                     </svg>
                 </a>
             </li>
-        </ul>
+        </ul> --}}
     </div>
 </div>
