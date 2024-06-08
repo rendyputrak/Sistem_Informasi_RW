@@ -1,4 +1,9 @@
 <section class="bg-[#f1f5f9] dark:bg-gray-900 h-[calc(100vh-96px+48px)] content-section" id="hero-section">
+    @if(session('alert'))
+    <script>
+        alert("{{ session('alert') }}");
+    </script>
+    @endif
     <div class=" mx-auto max-w-screen-xl text-center lg:py-12 lg:px-12">
         <a class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-[#e2e8f0] rounded-full dark:bg-gray-800 dark:text-w-putih hover:bg-gray-200 dark:hover:bg-gray-700"
             role="alert">

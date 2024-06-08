@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\VerifyRole;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -32,7 +33,7 @@ class UserPanelProvider extends PanelProvider
                 'danger' => Color::Red,
                 'gray' => Color::Slate,
                 'info' => Color::Blue,
-                'primary' => Color::Cyan,
+                'primary' => Color::Emerald,
                 'success' => Color::Emerald,
                 'warning' => Color::Orange, 
             ])
@@ -64,6 +65,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                VerifyRole::class,
             ]);
     }
 }

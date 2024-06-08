@@ -45,9 +45,10 @@ class UserResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Select::make('roles')
                     ->label('Role')
-                    ->multiple()
-                    ->required()
-                    ->relationship('roles', 'name')->preload(),
+                    ->options([
+                        'Admin' => 'Admin',
+                        'User' => 'User',
+                    ]),
             ]);
     }
 
@@ -57,11 +58,16 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
+                // Tables\Columns\TextColumn::make('email_verified_at')
+                //     ->dateTime()
+                //     ->sortable(),
+                Tables\Columns\TextColumn::make('roles')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

@@ -16,7 +16,6 @@ class PendudukResource extends JsonResource
     {
         return [
             'id' => $this->penduduk_id,
-            'nik' => $this->NIK,
         ];
     }
 }
