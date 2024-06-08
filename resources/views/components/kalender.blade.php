@@ -1,4 +1,3 @@
-<!-- component -->
 <div class="flex items-center justify-center py-8 pl-4">
     <div class="max-w-sm w-full shadow-lg rounded-2xl overflow-hidden dark:border-gray-700 border-[1.6px] border-gray-200">
         <div class="md:p-8 p-5 dark:bg-gray-800 bg-white rounded-t">

@@ -10,7 +10,7 @@
 
 <x-daftarumkm></x-daftarumkm>
 
-{{-- <x-agenda></x-agenda> --}}
+<x-agenda></x-agenda>
 
 <x-struktur></x-struktur>
 

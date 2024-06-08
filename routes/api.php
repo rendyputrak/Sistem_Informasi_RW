@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgendaAcaraController;
 use App\Http\Controllers\BeritaPengumumanController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\UMKMController;
 use Illuminate\Http\Request;
@@ -33,3 +34,6 @@ Route::get('/penduduk', [PendudukController::class, 'index']);
 
 //Routing API umkm
 Route::get('/umkm', [UMKMController::class, 'index']);
+
+//Routing API Galeri
+Route::get('/galeri', [GaleriController::class, 'index']);

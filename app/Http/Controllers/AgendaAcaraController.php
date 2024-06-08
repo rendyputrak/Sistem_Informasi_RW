@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AgendaAcaraController extends Controller
 {
     public function index() {
-        $pengumuman = AgendaAcara::all();
-        return AgendaAcaraResource::collection($pengumuman);
+        $agenda = AgendaAcara::all();
+        return AgendaAcaraResource::collection($agenda);
     }
 }
