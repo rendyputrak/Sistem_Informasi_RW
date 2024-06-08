@@ -18,6 +18,7 @@ class BeritaPengumumanResource extends JsonResource
             'id' => $this->berita_pengumuman_id,
             'judul' => $this->judul,
             'isi' => $this->isi,
+            'tanggal_posting' => $this->tanggal_posting,
             'foto' => $this->foto,
         ];
     }

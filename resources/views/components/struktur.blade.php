@@ -1,5 +1,5 @@
-<section class="bg-white dark:bg-gray-900 py-16 px-16 my-12 content-section" id="struktur-section">
-    <div class="py-8 mx-auto max-w-screen-xl lg:py-16">
+<section class="bg-white dark:bg-gray-900 py-4 px-16 my-4 content-section" id="struktur-section">
+    <div class="py-4 mx-auto max-w-screen-xl lg:py-16">
         <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Struktur Kepengurusan
             </h2>
