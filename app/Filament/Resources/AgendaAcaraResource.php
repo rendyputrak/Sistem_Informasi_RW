@@ -31,40 +31,44 @@ class AgendaAcaraResource extends Resource
 
     public static function form(Form $form): Form
     {
-        Select::make('admin_id')
-        ->options([
-        'Admin' => '1',
-        ]);
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_acara'),
-                Forms\Components\DatePicker::make('tanggal'),
-                Forms\Components\TimePicker::make('waktu'),
-                Forms\Components\TextInput::make('lokasi'),
-                Forms\Components\TextArea::make('deskripsi'),
+                Forms\Components\TextInput::make('nama_acara')
+                ->required(),
+                Forms\Components\DatePicker::make('tanggal')
+                ->required(),
+                Forms\Components\TimePicker::make('waktu')
+                ->required(),
+                Forms\Components\TextInput::make('lokasi')
+                ->required(),
+                Forms\Components\TextArea::make('deskripsi')
+                ->required()
+                ->maxLength(50)
+                ->label('Deskripsi (Maks 50 Huruf)'),
                 Forms\Components\Select::make('admin_id')
+                ->required()
                 ->relationship(name: 'admin', titleAttribute:'nama')
-                ->searchable()
+                // ->searchable()
                 ->label('Pengunggah'),
             ]);
     }
-    public static function infolist(Infolist $infolist): infolist
-    {
-        return $infolist
-            ->schema([
-                Components\Section::make()->schema([
-                    Components\Grid::make(3)->schema([
-                        Components\TextEntry::make('nama_acara'),
-                        Components\TextEntry::make('tanggal'),
-                        Components\TextEntry::make('waktu'),
-                        Components\TextEntry::make('lokasi'),
-                        Components\TextEntry::make('deskripsi'),
-                        Components\TextEntry::make('admin.nama')
-                        ->label('Pengunggah'),
-                    ])
-                ])
-            ]);
-    }
+    // public static function infolist(Infolist $infolist): infolist
+    // {
+    //     return $infolist
+    //         ->schema([
+    //             Components\Section::make()->schema([
+    //                 Components\Grid::make(3)->schema([
+    //                     Components\TextEntry::make('nama_acara'),
+    //                     Components\TextEntry::make('tanggal'),
+    //                     Components\TextEntry::make('waktu'),
+    //                     Components\TextEntry::make('lokasi'),
+    //                     Components\TextEntry::make('deskripsi'),
+    //                     Components\TextEntry::make('admin.nama')
+    //                     ->label('Pengunggah'),
+    //                 ])
+    //             ])
+    //         ]);
+    // }
 
     public static function table(Table $table): Table
     {
@@ -82,20 +86,56 @@ class AgendaAcaraResource extends Resource
                 Tables\Columns\TextColumn::make('lokasi')
                 ->searchable(),
                 Tables\Columns\TextColumn::make('deskripsi')
+                ->limit(50)
                 ->searchable(),
                 Tables\Columns\TextColumn::make('admin.nama')
                 ->label('Pengunggah')
+                ->sortable()
+                ->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make()
+                ->action(function ($record) {
+                    try {
+                        $record->delete();
+                    } catch (\Illuminate\Database\QueryException $e) {
+                        if ($e->getCode() == 23000) {
+                            \Filament\Notifications\Notification::make()
+                                ->title('Gagal Menghapus!')
+                                ->body('Data tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                ->danger()
+                                ->send();
+                        } else {
+                            throw $e;
+                        }
+                    }
+                }),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->action(function ($records) {
+                            foreach ($records as $record) {
+                                try {
+                                    $record->delete();
+                                } catch (\Illuminate\Database\QueryException $e) {
+                                    if ($e->getCode() == 23000) {
+                                        \Filament\Notifications\Notification::make()
+                                            ->title('Gagal Menghapus!')
+                                            ->body('Terdapat data yang tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                            ->danger()
+                                            ->send();
+                                    } else {
+                                        throw $e;
+                                    }
+                                }
+                            }
+                        }),
                 ]),
             ]);
     }
