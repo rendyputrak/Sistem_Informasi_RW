@@ -30,33 +30,24 @@ class GaleriResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('judul'),
-                Forms\Components\TextArea::make('deskripsi'),
+                Forms\Components\TextInput::make('judul')
+                ->required(),
+                Forms\Components\TextArea::make('deskripsi')
+                ->required(),
                 Forms\Components\FileUpload::make('foto')
+                ->label('Foto (Maks 2 MB)')
                 ->image()
                 ->directory('images/galeri')
                 ->columnSpanFull()
+                ->maxSize(2048)
                 ->required(),
-                Forms\Components\DatePicker::make('tanggal_upload'),
+                Forms\Components\DatePicker::make('tanggal_upload')
+                ->required()
+                ->default(now()),
                 Forms\Components\Select::make('admin_id')
+                ->required()
                 ->relationship(name: 'admin', titleAttribute: 'nama')
                 ->label('Pengunggah'),
-            ]);
-    }
-    public static function infolist(Infolist $infolist): infolist
-    {
-        return $infolist
-            ->schema([
-                Components\Section::make()->schema([
-                    Components\Grid::make(5)->schema([
-                        Components\TextEntry::make('judul'),
-                        Components\TextEntry::make('deskripsi'),
-                        Components\ImageEntry::make('foto'),
-                        Components\TextEntry::make('tanggal_upload'),
-                        Components\TextEntry::make('admin.nama')
-                        ->label('Pengunggah'),
-                    ])
-                ])
             ]);
     }
 
@@ -82,12 +73,45 @@ class GaleriResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make()
+                ->action(function ($record) {
+                    try {
+                        $record->delete();
+                    } catch (\Illuminate\Database\QueryException $e) {
+                        if ($e->getCode() == 23000) {
+                            \Filament\Notifications\Notification::make()
+                                ->title('Gagal Menghapus!')
+                                ->body('Data tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                ->danger()
+                                ->send();
+                        } else {
+                            throw $e;
+                        }
+                    }
+                }),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->action(function ($records) {
+                            foreach ($records as $record) {
+                                try {
+                                    $record->delete();
+                                } catch (\Illuminate\Database\QueryException $e) {
+                                    if ($e->getCode() == 23000) {
+                                        \Filament\Notifications\Notification::make()
+                                            ->title('Gagal Menghapus!')
+                                            ->body('Terdapat data yang tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                            ->danger()
+                                            ->send();
+                                    } else {
+                                        throw $e;
+                                    }
+                                }
+                            }
+                        }),
                 ]),
             ]);
     }
