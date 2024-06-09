@@ -4,16 +4,12 @@ namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\BansosResource\Pages;
 use App\Filament\User\Resources\BansosResource\Pages\ListBansos;
-use App\Filament\User\Resources\BansosResource\RelationManagers;
 use App\Models\Bansos;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +43,7 @@ class BansosResource extends Resource
                 ->default($pendudukId)
                 ->disabled()
                 ->required(),
-                
+
             Components\Select::make('penghasilan')
                 ->label('Penghasilan')
                 ->options([
@@ -135,6 +131,7 @@ class BansosResource extends Resource
             ->query(ListBansos::forCurrentUser())
             ->columns([
                 Tables\Columns\TextColumn::make('penduduk.nama')->label('Nama'),
+                Tables\Columns\TextColumn::make('status_pengajuan')->label('Status Pengajuan'),
                 Tables\Columns\TextColumn::make('penghasilan')->label('Penghasilan'),
                 Tables\Columns\TextColumn::make('pengeluaran')->label('Pengeluaran'),
                 Tables\Columns\TextColumn::make('luas_rumah')->label('Luas Rumah'),
@@ -169,7 +166,7 @@ class BansosResource extends Resource
             'index' => Pages\ListBansos::route('/'),
             'create' => Pages\CreateBansos::route('/create'),
             'view' => Pages\ViewBansos::route('/{record}'),
-            'edit' => Pages\EditBansos::route('/{record}/edit'),
+            // 'edit' => Pages\EditBansos::route('/{record}/edit'),
         ];
     }
 }

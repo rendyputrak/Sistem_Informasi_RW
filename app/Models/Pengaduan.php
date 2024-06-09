@@ -19,7 +19,7 @@ class Pengaduan extends Model
         'tanggal_pengaduan',
         'foto',
         'status_pengaduan',
-        'pengirim_id',
+        'penduduk_id',
     ];
 
     public function penduduk():BelongsTo

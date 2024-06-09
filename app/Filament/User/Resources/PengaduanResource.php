@@ -2,10 +2,10 @@
 
 namespace App\Filament\User\Resources;
 
+use App\Filament\User\Resources\PengaduanResource\Pages\ListPengaduans;
 use App\Filament\User\Resources\PengaduanResource\Pages;
 use App\Models\Pengaduan;
 use Filament\Forms;
-use Filament\Forms\Components\Builder;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,10 +25,7 @@ class PengaduanResource extends Resource
     protected static ?string $pluralLabel = 'Pengaduan';
     protected static ?string $navigationGroup = 'Pengaduan dan Pengajuan';
     protected static ?string $slug = 'pengaduan';
-    public static function canCreate(): bool
-    {
-        return false;
-    }
+
     public static function canEdit(Model $record): bool
     {
         return false;
@@ -36,42 +33,53 @@ class PengaduanResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $user = Auth::user();
+        $pendudukId = $user->penduduk_id;
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_pengirim')
-                    ->default(fn () => Auth::user()->name)
-                    ->disabled()
-                    ->required(),
-                Forms\Components\TextInput::make('email_pengirim')
-                    ->default(fn () => Auth::user()->email)
+                Forms\Components\Hidden::make('penduduk_id')
+                ->default($pendudukId),
+                Forms\Components\Select::make('decoy')
+                    ->label('Nama')
+                    ->relationship(name: 'penduduk', titleAttribute: 'nama')
+                    ->default($pendudukId)
                     ->disabled()
                     ->required(),
                 Forms\Components\TextInput::make('judul_pengaduan')
+                    ->label('Judul Pengaduan')
                     ->required(),
                 Forms\Components\Textarea::make('isi_pengaduan')
+                    ->label('Isi Pengaduan')
                     ->required(),
                 Forms\Components\DatePicker::make('tanggal_pengaduan')
+                    ->label('tanggal_pengaduan')
                     ->default(now())
-                    ->disabled(),
+                    ->required(),
                 Forms\Components\FileUpload::make('foto')
+                    ->label('Foto (Maks 2 MB)')
                     ->image()
                     ->directory('images/pengaduan')
-                    ->required()
+                    ->maxSize(2048)
+                    ->required(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
+        $userId = Auth::id();
         return $table
+            ->query(ListPengaduans::forCurrentUser())
             ->columns([
+                TextColumn::make('penduduk.nama')
+                    ->label('Nama'),
+                TextColumn::make('status_pengaduan')
+                    ->label('Status Pengaduan'),
                 TextColumn::make('judul_pengaduan')
-                    ->sortable()
-                    ->searchable(),
+                    ->label('Judul Pengaduan'),
                 TextColumn::make('isi_pengaduan')
-                    ->searchable(),
+                    ->label('Isi Pengaduan'),
                 TextColumn::make('tanggal_pengaduan')
-                    ->sortable()
-                    ->searchable(),
+                    ->label('Tanggal Pengaduan'),
                 ImageColumn::make('foto')
                     ->label('Foto'),
             ])
@@ -80,19 +88,11 @@ class PengaduanResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                // User can edit only their own records
-                Tables\Actions\EditAction::make()
-                    ->visible(fn (Pengaduan $record) => $record->email_pengirim === Auth::user()->email),
+                // Tables\Actions\EditAction::make()
             ])
             ->bulkActions([
-                // No bulk actions for users
-            ])
-            ->defaultSort('tanggal_pengaduan', 'desc')
-            ->query(function (Builder $query) {
-                // Filter the records based on the logged-in user
-                return $query->where('email_pengirim', Auth::user()->email);
-            });
-    }
+            ]);
+}
 
     public static function getRelations(): array
     {
@@ -107,7 +107,7 @@ class PengaduanResource extends Resource
             'index' => Pages\ListPengaduans::route('/'),
             'create' => Pages\CreatePengaduan::route('/create'),
             'view' => Pages\ViewPengaduan::route('/{record}'),
-            'edit' => Pages\EditPengaduan::route('/{record}/edit'),
+            // 'edit' => Pages\EditPengaduan::route('/{record}/edit'),
         ];
     }
 }

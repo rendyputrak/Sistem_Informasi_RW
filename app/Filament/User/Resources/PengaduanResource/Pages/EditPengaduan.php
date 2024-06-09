@@ -18,13 +18,4 @@ class EditPengaduan extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-    protected function mutateFormDataBeforeSave(array $data): array
-    {
-        // Ensure user can only edit their own records
-        $pengaduan = $this->record;
-        if ($pengaduan->email_pengirim !== Auth::user()->email) {
-            abort(403);
-        }
-        return $data;
-    }
 }

@@ -3,9 +3,12 @@
 namespace App\Filament\User\Resources\PengaduanResource\Pages;
 
 use App\Filament\User\Resources\PengaduanResource;
+use App\Models\Pengaduan;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
+use Override;
 
 class ListPengaduans extends ListRecords
 {
@@ -18,9 +21,10 @@ class ListPengaduans extends ListRecords
         ];
     }
 
-    protected function getTableQuery(): ?\Illuminate\Database\Eloquent\Builder
+    public static function forCurrentUser(): Builder
     {
-        // Ensure the table only shows records belonging to the logged-in user
-        return parent::getTableQuery()->where('email_pengirim', Auth::user()->email);
+        $userId = Auth::id();
+
+        return Pengaduan::where('penduduk_id', $userId);
     }
 }
