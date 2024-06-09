@@ -61,8 +61,10 @@ class PendudukResource extends Resource
                 Forms\Components\TextInput::make('alamat')
                 ->required(),
                 Forms\Components\TextInput::make('RT')
+                ->label('RT')
                 ->required(),
                 Forms\Components\TextInput::make('RW')
+                ->label('RW')
                 ->required()
                 ->default('03'),
                 Forms\Components\TextInput::make('pekerjaan')
