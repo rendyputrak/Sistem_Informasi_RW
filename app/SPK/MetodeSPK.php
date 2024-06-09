@@ -4,9 +4,9 @@ namespace App\SPK;
 
 use App\Models\Bansos;
 
-class MetodeSAW
+class MetodeSPK
 {
-    private $weights = [
+    private $bobot = [
         'penghasilan' => 0.3,
         'pengeluaran' => 0.2,
         'status_rumah' => 0.2,
@@ -14,7 +14,7 @@ class MetodeSAW
         'tanggungan' => 0.2,
     ];
 
-    private $criteria = [
+    private $kriteria = [
         'penghasilan' => [
             'Dibawah Rp.500.000' => 5,
             'Rp.500.000 - Rp.1.000.000' => 4,
@@ -52,50 +52,50 @@ class MetodeSAW
         ],
     ];
 
-    public function calculateSAW()
+    public function hitungSPK()
     {
         $bansosData = Bansos::where('status_pengajuan', 'Diajukan')->get();
 
         // Step 1: Normalisasi data dengan SAW
-        $normalizedData = [];
+        $datanormalisasi = [];
         foreach ($bansosData as $data) {
-            $normalizedRow = [];
-            foreach ($this->criteria as $criteria => $values) {
-                $normalizedRow[$criteria] = $values[$data->$criteria];
+            $barisnormalisasi = [];
+            foreach ($this->kriteria as $kriteria => $values) {
+                $barisnormalisasi[$kriteria] = $values[$data->$kriteria];
             }
-            $normalizedData[] = $normalizedRow;
+            $datanormalisasi[] = $barisnormalisasi;
         }
 
         // Step 2: Hitung bobot normalisasi
         $weightedData = [];
-        foreach ($normalizedData as $row) {
+        foreach ($datanormalisasi as $row) {
             $weightedRow = [];
-            foreach ($row as $criteria => $value) {
-                $weightedRow[$criteria] = $value * $this->weights[$criteria];
+            foreach ($row as $kriteria => $value) {
+                $weightedRow[$kriteria] = $value * $this->bobot[$kriteria];
             }
             $weightedData[] = $weightedRow;
         }
 
         // Step 3: Tentukan solusi ideal positif dan negatif
-        $idealPositive = [];
-        $idealNegative = [];
-        foreach (array_keys($this->criteria) as $criteria) {
-            $columnValues = array_column($weightedData, $criteria);
-            $idealPositive[$criteria] = max($columnValues);
-            $idealNegative[$criteria] = min($columnValues);
+        $idealpositif = [];
+        $idealnegatif = [];
+        foreach (array_keys($this->kriteria) as $kriteria) {
+            $columnValues = array_column($weightedData, $kriteria);
+            $idealpositif[$kriteria] = max($columnValues);
+            $idealnegatif[$kriteria] = min($columnValues);
         }
 
         // Step 4: Hitung jarak ke solusi ideal positif dan negatif
         $distances = [];
         foreach ($weightedData as $index => $row) {
-            $positiveDistance = 0;
-            $negativeDistance = 0;
-            foreach ($row as $criteria => $value) {
-                $positiveDistance += pow($value - $idealPositive[$criteria], 2);
-                $negativeDistance += pow($value - $idealNegative[$criteria], 2);
+            $jarakpositif = 0;
+            $jaraknegatif = 0;
+            foreach ($row as $kriteria => $value) {
+                $jarakpositif += pow($value - $idealpositif[$kriteria], 2);
+                $jaraknegatif += pow($value - $idealnegatif[$kriteria], 2);
             }
-            $distances[$index]['positive'] = sqrt($positiveDistance);
-            $distances[$index]['negative'] = sqrt($negativeDistance);
+            $distances[$index]['positive'] = sqrt($jarakpositif);
+            $distances[$index]['negative'] = sqrt($jaraknegatif);
         }
 
         // Step 5: Hitung nilai preferensi TOPSIS
@@ -114,10 +114,10 @@ class MetodeSAW
 
         return [
             'bansosData' => $bansosData,
-            'normalizedData' => $normalizedData,
+            'datanormalisasi' => $datanormalisasi,
             'weightedData' => $weightedData,
-            'idealPositive' => $idealPositive,
-            'idealNegative' => $idealNegative,
+            'idealpositif' => $idealpositif,
+            'idealnegatif' => $idealnegatif,
             'distances' => $distances,
             'preferences' => $preferences,
         ];

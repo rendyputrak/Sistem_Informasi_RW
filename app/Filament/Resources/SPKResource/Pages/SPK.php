@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\SPKResource\Pages;
 
 use App\Filament\Resources\SPKResource;
-use App\SPK\MetodeSAW;
+use App\SPK\MetodeSPK;
 use Filament\Resources\Pages\Page;
 
 class SPK extends Page
@@ -14,23 +14,23 @@ class SPK extends Page
 
     public static ?string $title = 'SPK';
     public $bansosData;
-    public $normalizedData;
+    public $datanormalisasi;
     public $weightedData;
-    public $idealPositive;
-    public $idealNegative;
+    public $idealpositif;
+    public $idealnegatif;
     public $distances;
     public $preferences;
 
     public function mount()
     {
-        $saw = new MetodeSAW();
-        $result = $saw->calculateSAW();
+        $saw = new MetodeSPK();
+        $result = $saw->hitungSPK();
 
         $this->bansosData = $result['bansosData'];
-        $this->normalizedData = $result['normalizedData'];
+        $this->datanormalisasi = $result['datanormalisasi'];
         $this->weightedData = $result['weightedData'];
-        $this->idealPositive = $result['idealPositive'];
-        $this->idealNegative = $result['idealNegative'];
+        $this->idealpositif = $result['idealpositif'];
+        $this->idealnegatif = $result['idealnegatif'];
         $this->distances = $result['distances'];
         $this->preferences = $result['preferences'];
     }

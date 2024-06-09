@@ -49,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($normalizedData as $index => $row)
+                @foreach ($datanormalisasi as $index => $row)
                     <tr>
                         <td>{{ $bansosData[$index]->id }}</td>
                         <td>{{ $row['penghasilan'] }}</td>
@@ -101,11 +101,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $idealPositive['penghasilan'] }}</td>
-                    <td>{{ $idealPositive['pengeluaran'] }}</td>
-                    <td>{{ $idealPositive['status_rumah'] }}</td>
-                    <td>{{ $idealPositive['luas_rumah'] }}</td>
-                    <td>{{ $idealPositive['tanggungan'] }}</td>
+                    <td>{{ $idealpositif['penghasilan'] }}</td>
+                    <td>{{ $idealpositif['pengeluaran'] }}</td>
+                    <td>{{ $idealpositif['status_rumah'] }}</td>
+                    <td>{{ $idealpositif['luas_rumah'] }}</td>
+                    <td>{{ $idealpositif['tanggungan'] }}</td>
                 </tr>
             </tbody>
         </table>
@@ -123,11 +123,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $idealNegative['penghasilan'] }}</td>
-                    <td>{{ $idealNegative['pengeluaran'] }}</td>
-                    <td>{{ $idealNegative['status_rumah'] }}</td>
-                    <td>{{ $idealNegative['luas_rumah'] }}</td>
-                    <td>{{ $idealNegative['tanggungan'] }}</td>
+                    <td>{{ $idealnegatif['penghasilan'] }}</td>
+                    <td>{{ $idealnegatif['pengeluaran'] }}</td>
+                    <td>{{ $idealnegatif['status_rumah'] }}</td>
+                    <td>{{ $idealnegatif['luas_rumah'] }}</td>
+                    <td>{{ $idealnegatif['tanggungan'] }}</td>
                 </tr>
             </tbody>
         </table>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MetodeSAWController;
+use App\Http\Controllers\MetodeSPKController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BansosController;
 use App\Http\Controllers\PengaduanController;
@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 // Routing untuk SPK
-Route::get('/saw', [MetodeSAWController::class, 'index'])->name('saw.index');
+Route::get('/saw', [MetodeSPKController::class, 'index'])->name('saw.index');
 
 // Routing aksi Bansos
 Route::put('/bansos/{bansos}/setujui', [BansosController::class, 'setujui'])->name('bansos.setujui');
