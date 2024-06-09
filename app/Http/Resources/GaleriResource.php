@@ -18,7 +18,7 @@ class GaleriResource extends JsonResource
             'galeri_id' => $this->galeri_id,
             'judul' => $this->judul,
             'deskripsi' => $this->deskripsi,
-            'foto' => $this->foto,
+            // 'foto' => $this->foto,
         ];
     }
 }

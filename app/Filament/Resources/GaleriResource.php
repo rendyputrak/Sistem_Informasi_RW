@@ -56,20 +56,15 @@ class GaleriResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
-                ->required()
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('deskripsi')
-                ->required()
                 ->searchable(),
-                Tables\Columns\ImageColumn::make('foto')
-                ->required(),
+                Tables\Columns\ImageColumn::make('foto'),
                 Tables\Columns\TextColumn::make('tanggal_upload')
-                ->required()
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('admin.nama')
-                ->required()
                 ->sortable()
                 ->searchable()
                 ->label('Pengunggah'),

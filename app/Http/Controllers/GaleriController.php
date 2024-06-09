@@ -11,6 +11,10 @@ class GaleriController extends Controller
 {
     public function index() {
         $galeri = Galeri::all();
-        return GaleriResource::collection($galeri);
+        $galeri->each(function ($item) {
+            $item->foto_url = asset('storage/' . $item->foto);
+        });
+    
+        return response()->json(['data' => $galeri]);
     }
 }
