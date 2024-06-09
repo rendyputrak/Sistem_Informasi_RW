@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components;
+use Illuminate\Database\Eloquent\Model;
 
 class BansosResource extends Resource
 {
@@ -29,6 +30,10 @@ class BansosResource extends Resource
     public static function canCreate(): bool
     {
       return false;
+    }
+    public static function canEdit(Model $record): bool
+    {
+        return false;
     }
 
     public static function infolist(Infolist $infolist): infolist
@@ -137,7 +142,7 @@ class BansosResource extends Resource
                     }
                 }),
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -176,7 +181,7 @@ class BansosResource extends Resource
             'index' => Pages\ListBansos::route('/'),
             // 'create' => Pages\CreateBansos::route('/create'),
             'view' => Pages\ViewBansos::route('/{record}'),
-            'edit' => Pages\EditBansos::route('/{record}/edit'),
+            // 'edit' => Pages\EditBansos::route('/{record}/edit'),
         ];
     }
 }

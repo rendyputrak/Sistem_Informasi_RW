@@ -22,8 +22,8 @@ class Pengaduan extends Model
         'pengirim_id',
     ];
 
-    public function pengirim():BelongsTo
+    public function penduduk():BelongsTo
     {
-        return $this->belongsTo(Pengirim::class, 'pengirim_id');
+        return $this->belongsTo(Penduduk::class, 'penduduk_id');
     }
 }
