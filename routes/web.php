@@ -3,6 +3,7 @@
 use App\Http\Controllers\MetodeSAWController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BansosController;
+use App\Http\Controllers\PengaduanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,11 @@ Route::get('/', function () {
 // Routing untuk SPK
 Route::get('/saw', [MetodeSAWController::class, 'index'])->name('saw.index');
 
-// Routing Action Bansos
+// Routing aksi Bansos
 Route::put('/bansos/{bansos}/setujui', [BansosController::class, 'setujui'])->name('bansos.setujui');
 Route::put('/bansos/{bansos}/tolak', [BansosController::class, 'tolak'])->name('bansos.tolak');
 
+// Routing aksi Pengaduan
+Route::put('/pengaduan/{record}/selesai', [PengaduanController::class, 'selesai'])->name('pengaduan.selesai');
+Route::put('/pengaduan/{record}/proses', [PengaduanController::class, 'proses'])->name('pengaduan.proses');
+Route::put('/pengaduan/{record}/tolak', [PengaduanController::class, 'tolak'])->name('pengaduan.tolak');

@@ -85,6 +85,38 @@ class PengaduanResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('Selesai')
+                    ->label('Selesai')
+                    ->action(function (Pengaduan $record) {
+                        $record->status_pengaduan = 'Selesai';
+                        $record->save();
+                    })
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->visible(fn ($record) => $record->status_pengaduan !== 'Selesai'),
+
+                Tables\Actions\Action::make('Proses')
+                    ->label('Proses')
+                    ->action(function (Pengaduan $record) {
+                        $record->status_pengaduan = 'Diproses';
+                        $record->save();
+                    })
+                    ->icon('heroicon-o-arrow-path')
+                    ->color('primary')
+                    ->requiresConfirmation()
+                    ->visible(fn ($record) => $record->status_pengaduan !== 'Diproses'),
+
+                Tables\Actions\Action::make('Tolak')
+                    ->label('Tolak')
+                    ->action(function (Pengaduan $record) {
+                        $record->status_pengaduan = 'Ditolak';
+                        $record->save();
+                    })
+                    ->icon('heroicon-o-x-circle')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->visible(fn ($record) => $record->status_pengaduan !== 'Ditolak'),
                 Tables\Actions\DeleteAction::make()
                 ->action(function ($record) {
                     try {
