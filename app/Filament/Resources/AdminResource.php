@@ -31,39 +31,22 @@ class AdminResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama'),
-                Forms\Components\TextInput::make('password')
-                ->password()
-                ->dehydrateStateUsing(fn($state) => Hash::make($state)),
-                Forms\Components\TextInput::make('email'),
+                Forms\Components\TextInput::make('nama')
+                ->required(),
+                Forms\Components\TextInput::make('email')
+                ->required(),
                 Forms\Components\Select::make('level_id')
+                ->required()
                 ->relationship(name: 'level', titleAttribute: 'level_nama')
                 ->label('Level'),
                 Forms\Components\Select::make('penduduk_id')
+                ->required()
                 ->relationship(name: 'penduduk', titleAttribute: 'nama')
-                ->searchable()
+                // ->searchable()
                 ->label('Penduduk'),
             ]);
     }
-    public static function infolist(Infolist $infolist): infolist
-    {
-        return $infolist
-            ->schema([
-                Components\Section::make()->schema([
-                    Components\Grid::make(3)->schema([
-                        Components\TextEntry::make('nama'),
-                        Components\TextEntry::make('password')
-                        ->getStateUsing(fn($record) => '********'),
-                        Components\TextEntry::make('email'),
-                        Components\TextEntry::make('level.level_nama')
-                        ->label('Level'),
-                        Components\TextEntry::make('penduduk.nama')
-                        ->label('Nama Lengkap'),
-                    ])
-                ])
-            ]);
-    }
-
+    
     public static function table(Table $table): Table
     {
         return $table
@@ -71,8 +54,6 @@ class AdminResource extends Resource
                 Tables\Columns\TextColumn::make('nama')
                 ->sortable()
                 ->searchable(),
-                Tables\Columns\TextColumn::make('password')
-                ->getStateUsing(fn($record) => '********'),
                 Tables\Columns\TextColumn::make('email')
                 ->sortable()
                 ->searchable(),
@@ -81,12 +62,45 @@ class AdminResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make()
+                ->action(function ($record) {
+                    try {
+                        $record->delete();
+                    } catch (\Illuminate\Database\QueryException $e) {
+                        if ($e->getCode() == 23000) {
+                            \Filament\Notifications\Notification::make()
+                                ->title('Gagal Menghapus!')
+                                ->body('Data tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                ->danger()
+                                ->send();
+                        } else {
+                            throw $e;
+                        }
+                    }
+                }),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->action(function ($records) {
+                            foreach ($records as $record) {
+                                try {
+                                    $record->delete();
+                                } catch (\Illuminate\Database\QueryException $e) {
+                                    if ($e->getCode() == 23000) {
+                                        \Filament\Notifications\Notification::make()
+                                            ->title('Gagal Menghapus!')
+                                            ->body('Terdapat data yang tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                            ->danger()
+                                            ->send();
+                                    } else {
+                                        throw $e;
+                                    }
+                                }
+                            }
+                        }),
                 ]),
             ]);
     }
