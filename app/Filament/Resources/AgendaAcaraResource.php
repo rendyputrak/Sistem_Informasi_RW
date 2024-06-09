@@ -52,23 +52,6 @@ class AgendaAcaraResource extends Resource
                 ->label('Pengunggah'),
             ]);
     }
-    // public static function infolist(Infolist $infolist): infolist
-    // {
-    //     return $infolist
-    //         ->schema([
-    //             Components\Section::make()->schema([
-    //                 Components\Grid::make(3)->schema([
-    //                     Components\TextEntry::make('nama_acara'),
-    //                     Components\TextEntry::make('tanggal'),
-    //                     Components\TextEntry::make('waktu'),
-    //                     Components\TextEntry::make('lokasi'),
-    //                     Components\TextEntry::make('deskripsi'),
-    //                     Components\TextEntry::make('admin.nama')
-    //                     ->label('Pengunggah'),
-    //                 ])
-    //             ])
-    //         ]);
-    // }
 
     public static function table(Table $table): Table
     {

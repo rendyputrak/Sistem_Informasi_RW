@@ -32,35 +32,29 @@ class BeritaPengumumanResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('judul')
-                ->columnSpanFull(),
+                ->columnSpanFull()
+                ->required(),
                 Forms\Components\TextArea::make('isi')
+                ->required()
                 ->columnSpanFull(),
                 Forms\Components\Select::make('jenis')
+                ->required()
                 ->options([
                     'Berita' => 'Berita',
                     'Pengumuman' => 'Pengumuman',
                 ]),
-                Forms\Components\DatePicker::make('tanggal_posting'),
+                Forms\Components\FileUpload::make('foto')
+                ->label('Foto (Maks 2 MB)')
+                ->image()
+                ->directory('images/beritapengumuman')
+                ->maxSize(2048),
+                Forms\Components\DatePicker::make('tanggal_posting')
+                ->required()
+                ->default(now()),
                 Forms\Components\Select::make('admin_id')
+                ->required()
                 ->relationship(name: 'admin', titleAttribute:'nama')
-                ->searchable()
                 ->label('Pengunggah'),
-            ]);
-    }
-    public static function infolist(Infolist $infolist): infolist
-    {
-        return $infolist
-            ->schema([
-                Components\Section::make()->schema([
-                    Components\Grid::make(5)->schema([
-                        Components\TextEntry::make('judul'),
-                        Components\TextEntry::make('isi'),
-                        Components\TextEntry::make('jenis'),
-                        Components\TextEntry::make('tanggal_posting'),
-                        Components\TextEntry::make('admin.nama')
-                        ->label('Pengunggah'),
-                    ])
-                ])
             ]);
     }
 
@@ -72,8 +66,12 @@ class BeritaPengumumanResource extends Resource
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('isi')
-                ->searchable(),
+                ->searchable()
+                ->limit(50),
                 Tables\Columns\TextColumn::make('jenis')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('foto')
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_posting')
@@ -88,12 +86,45 @@ class BeritaPengumumanResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make()
+                ->action(function ($record) {
+                    try {
+                        $record->delete();
+                    } catch (\Illuminate\Database\QueryException $e) {
+                        if ($e->getCode() == 23000) {
+                            \Filament\Notifications\Notification::make()
+                                ->title('Gagal Menghapus!')
+                                ->body('Data tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                ->danger()
+                                ->send();
+                        } else {
+                            throw $e;
+                        }
+                    }
+                }),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->action(function ($records) {
+                            foreach ($records as $record) {
+                                try {
+                                    $record->delete();
+                                } catch (\Illuminate\Database\QueryException $e) {
+                                    if ($e->getCode() == 23000) {
+                                        \Filament\Notifications\Notification::make()
+                                            ->title('Gagal Menghapus!')
+                                            ->body('Terdapat data yang tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                            ->danger()
+                                            ->send();
+                                    } else {
+                                        throw $e;
+                                    }
+                                }
+                            }
+                        }),
                 ]),
             ]);
     }
