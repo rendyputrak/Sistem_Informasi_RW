@@ -30,7 +30,7 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                ->label('Nama')
+                ->label('Username')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
@@ -49,6 +49,10 @@ class UserResource extends Resource
                         'Admin' => 'Admin',
                         'User' => 'User',
                     ]),
+                Forms\Components\Select::make('penduduk_id')
+                    ->label('Nama Lengkap')
+                    ->searchable()
+                    ->relationship(name: 'penduduk', titleAttribute: 'nama'),
             ]);
     }
 
@@ -57,13 +61,17 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Nama')
+                    ->label('Username')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('roles')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('penduduk.nama')
+                    ->label('Nama Lengkap')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

@@ -50,6 +50,7 @@ class BeritaPengumumanResource extends Resource
                 ->maxSize(2048),
                 Forms\Components\DatePicker::make('tanggal_posting')
                 ->required()
+                ->label('Tanggal Posting')
                 ->default(now()),
                 Forms\Components\Select::make('admin_id')
                 ->required()
@@ -75,6 +76,7 @@ class BeritaPengumumanResource extends Resource
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_posting')
+                ->label('Tanggal Posting')
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('admin.nama')

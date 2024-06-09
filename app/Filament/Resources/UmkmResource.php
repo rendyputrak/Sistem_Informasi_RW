@@ -60,6 +60,7 @@ class UmkmResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nama_umkm')
+                ->label('Nama UMKM')
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('alamat')

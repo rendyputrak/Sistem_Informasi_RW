@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BansosResource extends Resource
@@ -18,6 +19,16 @@ class BansosResource extends Resource
     protected static ?string $model = Bansos::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Pengajuan Bansos';
+    protected static ?string $label = 'Pengajuan Bansos';
+    protected static ?string $pluralLabel = 'Pengajuan Bansos';
+    protected static ?string $navigationGroup = 'Pengaduan dan Pengajuan';
+    protected static ?string $slug = 'pengajuan-bansos';
+
+    public static function canEdit(Model $record): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {

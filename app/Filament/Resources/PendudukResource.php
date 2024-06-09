@@ -31,16 +31,25 @@ class PendudukResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('NIK')
+                ->required()
                 ->label('NIK'),
-                Forms\Components\TextInput::make('nama'),
-                Forms\Components\TextInput::make('tempat_lahir'),
-                Forms\Components\DatePicker::make('tanggal_lahir'),
+                Forms\Components\TextInput::make('nama')
+                ->required()
+                ->label('Nama Lengkap'),
+                Forms\Components\TextInput::make('tempat_lahir')
+                ->required()
+                ->label('Tempat Lahir'),
+                Forms\Components\DatePicker::make('tanggal_lahir')
+                ->required()
+                ->label('Tanggal Lahir'),
                 Forms\Components\Select::make('jenis_kelamin')
+                ->required()
                 ->options([
                     'L' => 'Laki-Laki',
                     'P' => 'Perempuan',
                 ]),
                 Forms\Components\Select::make('agama')
+                ->required()
                 ->options([
                     'Islam' => 'Islam',
                     'Kristen' => 'Kristen',
@@ -49,9 +58,17 @@ class PendudukResource extends Resource
                     'Buddha' => 'Buddha',
                     'Khonghucu' => 'Khonghucu',
                 ]),
-                Forms\Components\TextInput::make('alamat'),
-                Forms\Components\TextInput::make('pekerjaan'),
+                Forms\Components\TextInput::make('alamat')
+                ->required(),
+                Forms\Components\TextInput::make('RT')
+                ->required(),
+                Forms\Components\TextInput::make('RW')
+                ->required()
+                ->default('03'),
+                Forms\Components\TextInput::make('pekerjaan')
+                ->required(),
                 Forms\Components\Select::make('status_pernikahan')
+                ->required()
                 ->options([
                     'Belum Menikah' => 'Belum Menikah',
                     'Menikah' => 'Menikah',
@@ -59,11 +76,13 @@ class PendudukResource extends Resource
                     'Cerai Mati' => 'Cerai Mati',
                 ]),
                 Forms\Components\Select::make('status_kependudukan')
+                ->required()
                 ->options([
                     'Menetap' => 'Menetap',
                     'Sementara' => 'Sementara',
                 ]),
                 Forms\Components\Select::make('level_id')
+                ->required()
                 ->relationship(name: 'level', titleAttribute: 'level_nama')
                 ->label('Level'),
             ]);

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\PengirimResource\Pages;
+namespace App\Filament\Resources\SPKResource\Pages;
 
-use App\Filament\Resources\PengirimResource;
+use App\Filament\Resources\SPKResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListPengirims extends ListRecords
+class ListSPKS extends ListRecords
 {
-    protected static string $resource = PengirimResource::class;
+    protected static string $resource = SPKResource::class;
 
     protected function getHeaderActions(): array
     {

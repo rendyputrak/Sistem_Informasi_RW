@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class PengaduanResource extends Resource
@@ -22,8 +23,16 @@ class PengaduanResource extends Resource
     protected static ?string $navigationLabel = 'Pengaduan';
     protected static ?string $label = 'Pengaduan';
     protected static ?string $pluralLabel = 'Pengaduan';
-    protected static ?string $navigationGroup = 'Pengaduan';
+    protected static ?string $navigationGroup = 'Pengaduan dan Pengajuan';
     protected static ?string $slug = 'pengaduan';
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+    public static function canEdit(Model $record): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {

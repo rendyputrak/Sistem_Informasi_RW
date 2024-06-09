@@ -26,8 +26,4 @@ class Umkm extends Model
     {
         return $this->belongsTo(Penduduk::class, 'penduduk_id');
     }
-    public function getFotoUrlAttribute()
-    {
-        return Storage::url($this->foto);
-    }
 }

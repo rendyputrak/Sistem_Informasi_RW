@@ -31,8 +31,10 @@ class LevelResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('level_kode'),
-                Forms\Components\TextInput::make('level_nama'),
+                Forms\Components\TextInput::make('level_kode')
+                ->required(),
+                Forms\Components\TextInput::make('level_nama')
+                ->required(),
             ]);
     }
 
