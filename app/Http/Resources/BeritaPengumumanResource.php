@@ -19,7 +19,7 @@ class BeritaPengumumanResource extends JsonResource
             'judul' => $this->judul,
             'isi' => $this->isi,
             'tanggal_posting' => $this->tanggal_posting,
-            'foto' => $this->foto,
+            // 'foto' => $this->foto,
         ];
     }
 }

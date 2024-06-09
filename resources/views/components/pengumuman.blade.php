@@ -21,7 +21,7 @@
             </button>
         </div>
         <div class="px-4 py-5 sm:p-6">
-            <img id="modalImage" class="w-full h-64 object-cover rounded-md mb-4" src="" alt="Pengumuman Foto">
+            <img id="modalImage" class="w-full h-auto object-contain rounded-md mb-4" src="" alt="Pengumuman Foto">
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-2" id="modalDate"></p>
             <p class="text-sm text-gray-700 dark:text-gray-300" id="modalContent"></p>
         </div>
@@ -30,6 +30,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     fetch('http://127.0.0.1:8000/api/pengumuman')
@@ -69,7 +70,7 @@
         document.getElementById('modalTitle').innerText = pengumuman.judul;
         document.getElementById('modalContent').innerText = pengumuman.isi;
         document.getElementById('modalDate').innerText = `Tanggal Posting: ${pengumuman.tanggal_posting}`;
-        document.getElementById('modalImage').src = pengumuman.foto;
+        document.getElementById('modalImage').src = pengumuman.foto_url;
         document.getElementById('pengumumanModal').classList.remove('hidden');
     }
 

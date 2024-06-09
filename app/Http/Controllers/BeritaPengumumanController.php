@@ -10,11 +10,10 @@ class BeritaPengumumanController extends Controller
 {
     public function index() {
         $pengumuman = BeritaPengumuman::all();
-        return BeritaPengumumanResource::collection($pengumuman);
-    }
-
-    public function show($id) {
-        $pengumuman = BeritaPengumuman::findOrFail($id);
-        return new BeritaPengumumanResource($pengumuman);
+        $pengumuman->each(function ($item) {
+            $item->foto_url = asset('storage/' . $item->foto);
+        });
+    
+        return response()->json(['data' => $pengumuman]);
     }
 }
