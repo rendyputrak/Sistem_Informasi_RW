@@ -55,71 +55,81 @@
 </div>
 
 <script>
-    fetch('http://127.0.0.1:8000/api/umkm')
-        .then(response => response.json())
-        .then(result => {
-            const data = result.data;
-            const umkmContainer = document.getElementById('umkm-container');
-            const allUmkmContainer = document.getElementById('allUmkmContainer');
-            let cardsHTML = '';
-            let allCardsHTML = '';
+fetch('http://127.0.0.1:8000/api/umkm')
+    .then(response => response.json())
+    .then(result => {
+        const data = result.data;
+        const umkmContainer = document.getElementById('umkm-container');
+        const allUmkmContainer = document.getElementById('allUmkmContainer');
+        let cardsHTML = '';
+        let allCardsHTML = '';
 
-            data.forEach((umkm, index) => {
-                const cardHTML = `
-                    <div onclick="showModalUMKM(${index})"
-                    class="cursor-pointer block rounded-lg p-4 shadow-sm dark:border-gray-700 bg-white border dark:bg-gray-800 border-gray-200">
-                        <img alt="" src="${umkm.foto}" class="h-48 w-full rounded-md object-cover" />
-                        <div class="mt-2">
-                            <dl>
-                                <div>
-                                    <dd class="font-bold mt-1 text-gray-500 dark:text-gray-400">${umkm.nama_umkm}</dd>
-                                </div>
-                            </dl>
-                            <div class="mt-6 flex items-center gap-8 text-xs">
-                                <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                                    <svg class="size-4 text-w-primer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                                    </svg>
-                                    <div class="mt-1.5 sm:mt-0">
-                                        <p class="text-gray-500">Alamat</p>
-                                        <p class="font-medium">${umkm.alamat}</p>
-                                    </div>
+        data.forEach((umkm, index) => {
+            const cardHTML = `
+                <div onclick="showModalUMKM(${index})"
+                class="cursor-pointer block rounded-lg p-4 shadow-sm dark:border-gray-700 bg-white border dark:bg-gray-800 border-gray-200">
+                    <img alt="" src="${umkm.foto_url}" class="h-48 w-full rounded-md object-cover" />
+                    <div class="mt-2">
+                        <dl>
+                            <div>
+                                <dd class="font-bold mt-1 text-gray-500 dark:text-gray-400">${umkm.nama_umkm}</dd>
+                            </div>
+                        </dl>
+                        <div class="mt-6 flex items-center gap-8 text-xs">
+                            <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                                <svg class="size-4 text-w-primer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                                </svg>
+                                <div class="mt-1.5 sm:mt-0">
+                                    <p class="text-gray-500">Alamat</p>
+                                    <p class="font-medium">${umkm.alamat}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                `;
+                </div>
+            `;
 
-                if (index < 8) {
-                    cardsHTML += cardHTML;
-                }
-                allCardsHTML += cardHTML;
+            if (index < 8) {
+                cardsHTML += cardHTML;
+            }
+            allCardsHTML += cardHTML;
+        });
+
+        umkmContainer.innerHTML = cardsHTML;
+        allUmkmContainer.innerHTML = allCardsHTML;
+        window.umkmData = data;
+
+        // Add event listeners for all UMKM elements in the allUmkmContainer
+        const umkmElements = allUmkmContainer.querySelectorAll('.block');
+        umkmElements.forEach((element, index) => {
+            element.addEventListener('click', () => {
+                showModalUMKM(index);
+                closeAllUmkmModal();
             });
+        });
+    })
+    .catch(error => console.error('Error:', error));
 
-            umkmContainer.innerHTML = cardsHTML;
-            allUmkmContainer.innerHTML = allCardsHTML;
-            window.umkmData = data;
-        })
-        .catch(error => console.error('Error:', error));
+function showModalUMKM(index) {
+    const umkm = window.umkmData[index];
+    document.getElementById('modalTitleUMKM').innerText = umkm.nama_umkm;
+    document.getElementById('modalImageUMKM').src = umkm.foto_url;
+    document.getElementById('modalAddress').innerText = `Alamat: ${umkm.alamat}`;
+    document.getElementById('modalDescription').innerText = umkm.deskripsi;
+    document.getElementById('umkmModal').classList.remove('hidden');
+}
 
-    function showModalUMKM(index) {
-        const umkm = window.umkmData[index];
-        document.getElementById('modalTitleUMKM').innerText = umkm.nama_umkm;
-        document.getElementById('modalImageUMKM').src = umkm.foto;
-        document.getElementById('modalAddress').innerText = `Alamat: ${umkm.alamat}`;
-        document.getElementById('modalDescription').innerText = umkm.deskripsi;
-        document.getElementById('umkmModal').classList.remove('hidden');
-    }
+function closeModalUMKM() {
+    document.getElementById('umkmModal').classList.add('hidden');
+}
 
-    function closeModalUMKM() {
-        document.getElementById('umkmModal').classList.add('hidden');
-    }
+function showAllUmkm() {
+    document.getElementById('allUmkmModal').classList.remove('hidden');
+}
 
-    function showAllUmkm() {
-        document.getElementById('allUmkmModal').classList.remove('hidden');
-    }
+function closeAllUmkmModal() {
+    document.getElementById('allUmkmModal').classList.add('hidden');
+}
 
-    function closeAllUmkmModal() {
-        document.getElementById('allUmkmModal').classList.add('hidden');
-    }
 </script>

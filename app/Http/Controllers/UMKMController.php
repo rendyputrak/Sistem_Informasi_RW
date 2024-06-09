@@ -10,7 +10,11 @@ use Illuminate\Http\Request;
 class UMKMController extends Controller
 {
     public function index() {
-        $penduduk = Umkm::all();
-        return UMKMResource::collection($penduduk);
+        $umkm = Umkm::all();
+        $umkm->each(function ($item) {
+            $item->foto_url = asset('storage/' . $item->foto);
+        });
+    
+        return response()->json(['data' => $umkm]);
     }
 }

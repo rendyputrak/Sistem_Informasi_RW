@@ -19,7 +19,7 @@ class UMKMResource extends JsonResource
             'nama_umkm' => $this->nama_umkm,
             'alamat' => $this->alamat,
             'deskripsi' => $this->deskripsi,
-            'foto' => $this->foto,
+            // 'foto' => $this->foto,
         ];
     }
 }
