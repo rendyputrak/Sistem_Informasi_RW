@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateBansos extends CreateRecord
 {
     protected static string $resource = BansosResource::class;
+
+    protected static bool $canCreateAnother = false;
 }

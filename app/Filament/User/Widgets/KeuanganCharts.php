@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace App\Filament\User\Widgets;
 
 use Carbon\Carbon;
 use Filament\Widgets\ChartWidget;
 use App\Models\Keuangan;
 
-class KeuanganChart extends ChartWidget
+class KeuanganCharts extends ChartWidget
 {
     protected static ?string $heading = 'Jumlah Saldo 30 Hari Terakhir';
     protected static ?string $maxHeight = '200px';

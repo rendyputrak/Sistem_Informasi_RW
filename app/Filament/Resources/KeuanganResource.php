@@ -61,6 +61,7 @@ class KeuanganResource extends Resource
                 ->sortable()
                 ->searchable(),
             ])
+            ->defaultSort('tanggal', 'asc')
             ->filters([
                 //
             ])

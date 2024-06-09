@@ -10,7 +10,7 @@ use App\Models\Bansos;
 use App\Models\Pengaduan;
 
 
-class StatsPenduduk extends BaseWidget
+class AAStatsPenduduk extends BaseWidget
 {
     protected function getStats(): array
     {

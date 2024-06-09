@@ -15,8 +15,10 @@ class Bansos extends Model
     protected $fillable = [
         'penduduk_id',
         'penghasilan',
+        'pengeluaran',
         'foto_gaji',
         'luas_rumah',
+        'status_rumah',
         'foto_rumah',
         'tanggungan',
         'tanggal_pengajuan',
