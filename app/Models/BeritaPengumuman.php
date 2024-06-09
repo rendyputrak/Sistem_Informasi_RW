@@ -17,6 +17,7 @@ class BeritaPengumuman extends Model
         'judul',
         'isi',
         'jenis',
+        'foto',
         'tanggal_posting',
         'admin_id',
     ];

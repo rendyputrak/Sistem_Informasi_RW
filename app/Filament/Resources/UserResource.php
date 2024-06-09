@@ -18,11 +18,11 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
-    protected static ?string $navigationLabel = 'User';
-    protected static ?string $label = 'User';
-    protected static ?string $pluralLabel = 'User';
+    protected static ?string $navigationLabel = 'Manajemen User';
+    protected static ?string $label = 'Manajemen User';
+    protected static ?string $pluralLabel = 'Manajemen User';
     protected static ?string $navigationGroup = 'Credentials';
-    protected static ?int $navigationGroupSort = 4;
+    protected static ?int $navigationGroupSort = 5;
     protected static ?string $slug = 'user';
 
     public static function form(Form $form): Form
@@ -63,9 +63,6 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->sortable()
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('email_verified_at')
-                //     ->dateTime()
-                //     ->sortable(),
                 Tables\Columns\TextColumn::make('roles')
                     ->searchable()
                     ->sortable(),
@@ -82,12 +79,45 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make()
+                ->action(function ($record) {
+                    try {
+                        $record->delete();
+                    } catch (\Illuminate\Database\QueryException $e) {
+                        if ($e->getCode() == 23000) {
+                            \Filament\Notifications\Notification::make()
+                                ->title('Gagal Menghapus!')
+                                ->body('Data tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                ->danger()
+                                ->send();
+                        } else {
+                            throw $e;
+                        }
+                    }
+                }),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->action(function ($records) {
+                            foreach ($records as $record) {
+                                try {
+                                    $record->delete();
+                                } catch (\Illuminate\Database\QueryException $e) {
+                                    if ($e->getCode() == 23000) {
+                                        \Filament\Notifications\Notification::make()
+                                            ->title('Gagal Menghapus!')
+                                            ->body('Terdapat data yang tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                            ->danger()
+                                            ->send();
+                                    } else {
+                                        throw $e;
+                                    }
+                                }
+                            }
+                        }),
                 ]),
             ]);
     }

@@ -30,39 +30,28 @@ class UmkmResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama_umkm')->columnSpan(2)
+                Forms\Components\TextInput::make('nama_umkm')
+                ->required()
                 ->label('Nama UMKM'),
-                Forms\Components\TextInput::make('alamat')->columnSpan(2),
+                Forms\Components\TextInput::make('alamat')
+                ->required(),
                 Forms\Components\Select::make('penduduk_id')
                 ->options(function(){
                     return \App\Models\Penduduk::pluck('penduduk_id' , 'penduduk_id');
                 })
                 ->relationship(name: 'penduduk', titleAttribute: 'nama')
                 ->searchable()
-                ->label('Pemilik'),
-                Forms\Components\MarkdownEditor::make('deskripsi')->columnSpan(2)
-                ->disableToolbarButtons(['attachFiles', 'table', 'blockquote', 'codeBlock']),
-                Forms\Components\FileUpload::make('foto')->columnSpan(2)
-                ->image()
-                ->directory('foto-umkm')
+                ->label('Pemilik')
                 ->required(),
-            ]);
-    }
-
-    public static function infolist(Infolist $infolist): infolist
-    {
-        return $infolist
-            ->schema([
-                Components\Section::make()->schema([
-                    Components\Grid::make(2)->schema([
-                        Components\TextEntry::make('nama_umkm'),
-                        Components\TextEntry::make('alamat'),
-                        Components\TextEntry::make('deskripsi'),
-                        Components\TextEntry::make('penduduk_id'),
-                        Components\ImageEntry::make('foto')
-                        ->disk('public'),
-                    ])
-                ])
+                Forms\Components\TextArea::make('deskripsi')
+                ->required(),
+                Forms\Components\FileUpload::make('foto')
+                ->columnSpan(2)
+                ->image()
+                ->label('Foto (Maks 2 MB)')
+                ->directory('images/umkm')
+                ->required()
+                ->maxSize(2048),
             ]);
     }
 
@@ -76,7 +65,8 @@ class UmkmResource extends Resource
                 Tables\Columns\TextColumn::make('alamat')
                 ->searchable(),
                 Tables\Columns\TextColumn::make('deskripsi')
-                ->searchable(),
+                ->searchable()
+                ->limit(50),
                 Tables\Columns\TextColumn::make('penduduk.nama')
                 ->searchable()
                 ->label('Pemilik'),
@@ -87,12 +77,45 @@ class UmkmResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\DeleteAction::make()
+                ->action(function ($record) {
+                    try {
+                        $record->delete();
+                    } catch (\Illuminate\Database\QueryException $e) {
+                        if ($e->getCode() == 23000) {
+                            \Filament\Notifications\Notification::make()
+                                ->title('Gagal Menghapus!')
+                                ->body('Data tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                ->danger()
+                                ->send();
+                        } else {
+                            throw $e;
+                        }
+                    }
+                }),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->action(function ($records) {
+                            foreach ($records as $record) {
+                                try {
+                                    $record->delete();
+                                } catch (\Illuminate\Database\QueryException $e) {
+                                    if ($e->getCode() == 23000) {
+                                        \Filament\Notifications\Notification::make()
+                                            ->title('Gagal Menghapus!')
+                                            ->body('Terdapat data yang tidak bisa dihapus karena berkaitan dengan data lainnya.')
+                                            ->danger()
+                                            ->send();
+                                    } else {
+                                        throw $e;
+                                    }
+                                }
+                            }
+                        }),
                 ]),
             ]);
     }
