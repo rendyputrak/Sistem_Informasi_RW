@@ -26,13 +26,17 @@ class PendudukResource extends Resource
     protected static ?string $navigationGroup = 'Kependudukan';
     protected static ?string $slug = 'penduduk';
 
-    public static function form(Form $form): Form
+    public static function form(Form $form, ?Penduduk $record = null): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('NIK')
                 ->required()
-                ->unique(ignorable: fn($record) => $record ? $record->getKey() : null)
+                ->unique(ignorable: $record ? function ($value) use ($record) {
+                    return Penduduk::where('NIK', $value)
+                        ->whereKeyNot($record->getKey())
+                        ->exists();
+                } : null)
                 ->label('NIK'),
                 Forms\Components\TextInput::make('nama')
                 ->required()
