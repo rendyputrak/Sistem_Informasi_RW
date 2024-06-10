@@ -32,11 +32,7 @@ class PendudukResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('NIK')
                 ->required()
-                ->unique(ignorable: $record ? function ($value) use ($record) {
-                    return Penduduk::where('NIK', $value)
-                        ->whereKeyNot($record->getKey())
-                        ->exists();
-                } : null)
+                ->unique(ignoreRecord: true)
                 ->label('NIK'),
                 Forms\Components\TextInput::make('nama')
                 ->required()
