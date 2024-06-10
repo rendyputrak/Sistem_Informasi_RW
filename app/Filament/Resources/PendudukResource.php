@@ -32,6 +32,7 @@ class PendudukResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('NIK')
                 ->required()
+                ->unique()
                 ->label('NIK'),
                 Forms\Components\TextInput::make('nama')
                 ->required()
