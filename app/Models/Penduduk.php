@@ -21,6 +21,8 @@ class Penduduk extends Model
         'jenis_kelamin',
         'agama',
         'alamat',
+        'RT',
+        'RW',
         'pekerjaan',
         'status_pernikahan',
         'status_kependudukan',
