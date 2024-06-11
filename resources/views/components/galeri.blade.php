@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const apiUrl = "http://127.0.0.1:8000/api/galeri";
 
     let currentPage = 1;
-    const itemsPerPage = 9;
+    const itemsPerPage = 12;
     let galleryData = [];
 
     async function fetchGalleryData() {
