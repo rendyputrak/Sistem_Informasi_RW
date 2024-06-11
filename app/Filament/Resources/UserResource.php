@@ -37,12 +37,16 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at')
-                    ->required(),
+                // Forms\Components\DateTimePicker::make('email_verified_at')
+                //     ->required(),
                 Forms\Components\TextInput::make('password')
                     ->password()
-                    ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->dehydrateStateUsing(fn($state) => !empty($state) ? bcrypt($state) : null)
+                    ->dehydrated(fn($state) => !empty($state))
+                    ->required(fn($livewire) => $livewire instanceof Pages\CreateUser)
+                    ->label(fn($livewire) => $livewire instanceof Pages\EditUser ? 'Ubah Password' : 'Password')
+                    ->hint(fn($livewire) => $livewire instanceof Pages\EditUser ? 'Biarkan kosong jika tidak ingin mengubah password' : null),
                 Forms\Components\Select::make('roles')
                     ->label('Role')
                     ->options([
@@ -51,7 +55,8 @@ class UserResource extends Resource
                     ]),
                 Forms\Components\Select::make('penduduk_id')
                     ->label('Nama Lengkap')
-                    ->searchable()
+                    ->searchable(['nama', 'NIK'])
+                    ->searchPrompt('Cari berdasarkan nama / NIK')
                     ->relationship(name: 'penduduk', titleAttribute: 'nama'),
             ]);
     }

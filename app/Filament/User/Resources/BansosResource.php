@@ -12,6 +12,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components;
 use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Illuminate\Support\Facades\DB;
+use Filament\Forms\Components\Actions\Action;
 
 class BansosResource extends Resource
 {
@@ -120,7 +124,7 @@ class BansosResource extends Resource
                 ->directory('images/bansos/rumah')
                 ->maxSize(2048)
                 ->required(),
-            ]);
+                ]);
     }
 
     public static function table(Table $table): Table
@@ -134,8 +138,10 @@ class BansosResource extends Resource
                 Tables\Columns\TextColumn::make('status_pengajuan')->label('Status Pengajuan'),
                 Tables\Columns\TextColumn::make('penghasilan')->label('Penghasilan'),
                 Tables\Columns\TextColumn::make('pengeluaran')->label('Pengeluaran'),
+                Tables\Columns\ImageColumn::make('foto_gaji')->label('Foto Gaji'),
                 Tables\Columns\TextColumn::make('luas_rumah')->label('Luas Rumah'),
                 Tables\Columns\TextColumn::make('status_rumah')->label('Status Rumah'),
+                Tables\Columns\ImageColumn::make('foto_rumah')->label('Foto Rumah'),
                 Tables\Columns\TextColumn::make('tanggungan')->label('Tanggungan'),
                 Tables\Columns\TextColumn::make('tanggal_pengajuan')->label('Tanggal Pengajuan'),
             ])
