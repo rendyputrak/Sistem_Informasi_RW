@@ -21,9 +21,6 @@ Route::get('/', function () {
     return view('beranda', ['judul' => 'RW 03 Bunulrejo']);
 });
 
-// Routing untuk SPK
-Route::get('/saw', [MetodeSPKController::class, 'index'])->name('saw.index');
-
 // Routing aksi Bansos
 Route::put('/bansos/{bansos}/setujui', [BansosController::class, 'setujui'])->name('bansos.setujui');
 Route::put('/bansos/{bansos}/tolak', [BansosController::class, 'tolak'])->name('bansos.tolak');

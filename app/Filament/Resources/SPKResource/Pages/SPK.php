@@ -20,11 +20,18 @@ class SPK extends Page
     public $idealnegatif;
     public $distances;
     public $preferences;
+    public $bobot;
+    public $kriteria;
+    public $penghasilan;
+    public $pengeluaran;
+    public $status_rumah;
+    public $luas_rumah;
+    public $tanggungan;
 
     public function mount()
     {
-        $saw = new MetodeSPK();
-        $result = $saw->hitungSPK();
+        $spk = new MetodeSPK();
+        $result = $spk->hitungSPK();
 
         $this->bansosData = $result['bansosData'];
         $this->datanormalisasi = $result['datanormalisasi'];
@@ -33,5 +40,12 @@ class SPK extends Page
         $this->idealnegatif = $result['idealnegatif'];
         $this->distances = $result['distances'];
         $this->preferences = $result['preferences'];
+        $this->bobot = $spk->getBobot();
+        $this->kriteria = $spk->getKriteria();
+        $this->penghasilan = $spk->getPenghasilan();
+        $this->pengeluaran = $spk->getpengeluaran();
+        $this->status_rumah = $spk->getStatusRumah();
+        $this->luas_rumah = $spk->getLuasRumah();
+        $this->tanggungan = $spk->getTanggungan();
     }
 }

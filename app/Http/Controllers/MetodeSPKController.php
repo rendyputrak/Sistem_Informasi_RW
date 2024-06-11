@@ -7,16 +7,19 @@ use Illuminate\Http\Request;
 
 class MetodeSPKController extends Controller
 {
-    protected $saw;
+    protected $spk;
 
-    public function __construct(MetodeSPK $saw)
+    public function __construct(MetodeSPK $spk)
     {
-        $this->saw = $saw;
+        $this->spk = $spk;
     }
 
     public function index()
     {
-        $result = $this->saw->hitungSPK();
-        return view('saw.index', $result);
+        $spk = new MetodeSPK();
+        $result = $spk->hitungSPK();
+        $result['bobot'] = $spk->getBobot();
+        $result['kriteria'] = $spk->getKriteria();
+        
     }
 }

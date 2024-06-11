@@ -34,7 +34,7 @@ class AgendaAcaraResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nama_acara')
-                ->label('nama_acara')
+                ->label('Nama Acara')
                 ->required(),
                 Forms\Components\DatePicker::make('tanggal')
                 ->required(),
