@@ -72,7 +72,7 @@ class BeritaPengumumanResource extends Resource
                 Tables\Columns\TextColumn::make('jenis')
                 ->sortable()
                 ->searchable(),
-                Tables\Columns\TextColumn::make('foto')
+                Tables\Columns\ImageColumn::make('foto')
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_posting')
