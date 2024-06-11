@@ -33,78 +33,86 @@
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const galeriContainer = document.getElementById("galeri-container");
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+    const apiUrl = "http://127.0.0.1:8000/api/galeri";
+
     let currentPage = 1;
     const itemsPerPage = 9;
+    let galleryData = [];
 
-    async function fetchGaleriData(page) {
+    async function fetchGalleryData() {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/galeri?page=${page}&per_page=${itemsPerPage}`);
-            const result = await response.json();
-            return result.data;
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            galleryData = data.data;
+            renderGallery(currentPage);
         } catch (error) {
-            console.error('Error fetching galeri data:', error);
-            return [];
+            console.error("Error fetching gallery data:", error);
         }
     }
 
-    function renderGaleri(galeriData) {
-        const galeriContainer = document.getElementById('galeri-container');
-        galeriContainer.innerHTML = '';
-        galeriData.forEach((item, index) => {
-            const galeriItem = document.createElement('div');
-            galeriItem.style.position = 'relative';
-            galeriItem.style.width = '100%';
-            galeriItem.style.paddingTop = '75%';
-            galeriItem.style.overflow = 'hidden';
-            galeriItem.style.cursor = 'pointer';
-            galeriItem.addEventListener('click', () => showGaleriModal(index));
+    function renderGallery(page) {
+        galeriContainer.innerHTML = "";
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedItems = galleryData.slice(start, end);
 
-            galeriItem.innerHTML = `
-                <img class="h-auto w-full rounded-lg object-cover" src="${item.foto_url}" alt="${item.judul}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-            `;
-            galeriContainer.appendChild(galeriItem);
+        paginatedItems.forEach(item => {
+            const imgElement = document.createElement("img");
+            imgElement.src = item.foto_url;
+            imgElement.alt = item.deskripsi;
+            imgElement.classList.add("gallery-image", "rounded-md", "mb-4", "cursor-pointer");
+            imgElement.addEventListener("click", () => openGaleriModal(item));
+            galeriContainer.appendChild(imgElement);
         });
 
-        window.galeriData = galeriData;
+        prevButton.disabled = page === 1;
+        nextButton.disabled = end >= galleryData.length;
     }
 
-    async function loadGaleriPage(page) {
-        const galeriData = await fetchGaleriData(page);
-        if (galeriData.length > 0) {
-            renderGaleri(galeriData);
-            currentPage = page;
-        }
-        toggleButtons(galeriData.length);
+    function openGaleriModal(item) {
+        const modal = document.getElementById("galeriModal");
+        const modalImage = document.getElementById("modalImageGaleri");
+        const modalDescription = document.getElementById("modalDescriptionGaleri");
+
+        modalImage.src = item.foto_url;
+        modalDescription.textContent = item.deskripsi;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
     }
 
-    function toggleButtons(dataLength) {
-        document.getElementById('prev-button').disabled = currentPage === 1;
-        document.getElementById('next-button').disabled = dataLength < itemsPerPage;
+    window.closeGaleriModal = function() {
+        const modal = document.getElementById("galeriModal");
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
     }
 
-    function showGaleriModal(index) {
-        const galeri = window.galeriData[index];
-        document.getElementById('modalTitleGaleri').innerText = galeri.judul;
-        document.getElementById('modalImageGaleri').src = galeri.foto_url;
-        document.getElementById('modalDescriptionGaleri').innerText = galeri.deskripsi;
-        document.getElementById('galeriModal').classList.remove('hidden');
-    }
-
-    function closeGaleriModal() {
-        document.getElementById('galeriModal').classList.add('hidden');
-    }
-
-    document.getElementById('next-button').addEventListener('click', async () => {
-        await loadGaleriPage(currentPage + 1);
-    });
-
-    document.getElementById('prev-button').addEventListener('click', async () => {
+    prevButton.addEventListener("click", () => {
         if (currentPage > 1) {
-            await loadGaleriPage(currentPage - 1);
+            currentPage--;
+            renderGallery(currentPage);
         }
     });
 
-    (async function() {
-        await loadGaleriPage(currentPage);
-    })();
+    nextButton.addEventListener("click", () => {
+        if ((currentPage * itemsPerPage) < galleryData.length) {
+            currentPage++;
+            renderGallery(currentPage);
+        }
+    });
+
+    fetchGalleryData();
+});
+
 </script>
+
+<style>
+    .gallery-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+}
+</style>
