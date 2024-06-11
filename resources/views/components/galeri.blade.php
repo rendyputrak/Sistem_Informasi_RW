@@ -104,7 +104,6 @@
         }
     });
 
-    // Initial load
     (async function() {
         await loadGaleriPage(currentPage);
     })();

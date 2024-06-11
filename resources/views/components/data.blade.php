@@ -5,10 +5,6 @@
                 <dt id="jumlah-penduduk" class="mb-2 text-4xl md:text-4xl font-extrabold">0</dt>
                 <dd class="font-light text-gray-500 dark:text-gray-400">Jumlah Penduduk</dd>
             </div>
-            {{-- <div class="flex flex-col items-center justify-center">
-                <dt id="program-besar" class="mb-2 text-4xl md:text-4xl font-extrabold">0</dt>
-                <dd class="font-light text-gray-500 dark:text-gray-400">Program Besar</dd>
-            </div> --}}
             <div class="flex flex-col items-center justify-center">
                 <dt id="jumlah-umkm" class="mb-2 text-4xl md:text-4xl font-extrabold">0</dt>
                 <dd class="font-light text-gray-500 dark:text-gray-400">Jumlah UMKM</dd>
@@ -23,10 +19,7 @@
         const jumlahPendudukElement = document.getElementById('jumlah-penduduk');
         const programBesarElement = document.getElementById('program-besar');
         const jumlahUmkmElement = document.getElementById('jumlah-umkm');
-        // const jumlahPenduduk = 999; //Angka data akhir
-        // const programBesar = 10; // Angka data akhir
-        // const jumlahUmkm = 20; // Angka data akhir
-        const duration = 5000; // Durasi animasi dalam milidetik (misalnya, 5 detik)
+        const duration = 5000;
 
         function animateNumbers(startTime, startValue, endValue, element) {
             const now = Date.now();
@@ -37,7 +30,6 @@
             if (progress < 1) {
                 requestAnimationFrame(function() {
                     animateNumbers(startTime, startValue, endValue, element);
-                    // element.textContent += '+';
                 });
             }
         }
@@ -45,7 +37,6 @@
         function startAnimation(jumlahPenduduk, jumlahUmkm) {
             const startTime = Date.now();
             animateNumbers(startTime, 0, jumlahPenduduk, jumlahPendudukElement);
-            // animateNumbers(startTime, 0, programBesar, programBesarElement);
             animateNumbers(startTime, 0, jumlahUmkm, jumlahUmkmElement);
         }
 

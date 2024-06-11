@@ -51,7 +51,8 @@ class AdminResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama')
+                Tables\Columns\TextColumn::make('penduduk.nama')
+                ->label('Nama Lengkap')
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('email')

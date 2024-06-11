@@ -12,7 +12,7 @@
 
 <x-agenda></x-agenda>
 
-<x-struktur></x-struktur>
+{{-- <x-struktur></x-struktur> --}}
 
 <x-galeri></x-galeri>
 

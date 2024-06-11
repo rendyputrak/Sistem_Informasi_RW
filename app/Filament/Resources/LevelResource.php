@@ -27,6 +27,11 @@ class LevelResource extends Resource
     protected static ?string $navigationGroup = 'Kependudukan';
     protected static ?string $slug = 'level';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+    return false;
+    }
+
     public static function form(Form $form): Form
     {
         return $form

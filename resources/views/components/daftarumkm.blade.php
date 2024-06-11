@@ -137,7 +137,7 @@ function closeAllUmkmModal() {
 
 <style>
     #modalImageUMKM {
-        max-height: 400px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
-        overflow-y: auto; /* Tambahkan overflow-y untuk membuat konten yang melebihi tinggi container dapat di-scroll */
+        max-height: 400px; 
+        overflow-y: auto;
     }
 </style>

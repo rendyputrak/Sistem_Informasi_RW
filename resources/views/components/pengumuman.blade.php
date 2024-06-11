@@ -71,13 +71,11 @@
     const modalContent = document.getElementById('modalContent');
     const modal = document.getElementById('pengumumanModal');
 
-    // Memasukkan konten pengumuman
     document.getElementById('modalTitle').innerText = pengumuman.judul;
     modalContent.innerText = pengumuman.isi;
     document.getElementById('modalDate').innerText = `Tanggal Posting: ${pengumuman.tanggal_posting}`;
     modalImage.src = pengumuman.foto_url;
 
-    // Menampilkan modal
     modal.classList.remove('hidden');
 }
 
@@ -88,7 +86,7 @@
 
 <style>
     #modalImage {
-    max-height: 300px; /* Sesuaikan tinggi maksimum dengan kebutuhanmu */
-    object-fit: contain; /* Gambar akan menyesuaikan diri ke dalam kotak tanpa memotong atau merubah aspek rasionya */
+    max-height: 300px; 
+    object-fit: contain; 
 }
 </style>
