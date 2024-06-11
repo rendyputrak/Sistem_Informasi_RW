@@ -66,7 +66,6 @@ class PengaduanResource extends Resource
 
     public static function table(Table $table): Table
     {
-        $userId = Auth::id();
         return $table
             ->query(ListPengaduans::forCurrentUser())
             ->columns([

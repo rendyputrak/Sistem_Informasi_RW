@@ -22,8 +22,9 @@ class ListBansos extends ListRecords
 
     public static function forCurrentUser(): Builder
     {
-        $userId = Auth::id();
+        $userid = Auth::user();
+        $pendudukId = $userid->penduduk_id;
 
-        return Bansos::where('penduduk_id', $userId);
+        return Bansos::where('penduduk_id', $pendudukId);
     }
 }

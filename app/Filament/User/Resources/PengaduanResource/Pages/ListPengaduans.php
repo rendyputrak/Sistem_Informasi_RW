@@ -23,8 +23,9 @@ class ListPengaduans extends ListRecords
 
     public static function forCurrentUser(): Builder
     {
-        $userId = Auth::id();
+        $userId = Auth::user();
+        $pendudukId = $userId->penduduk_id;
 
-        return Pengaduan::where('penduduk_id', $userId);
+        return Pengaduan::where('penduduk_id', $pendudukId);
     }
 }

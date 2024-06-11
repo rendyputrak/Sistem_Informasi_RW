@@ -57,7 +57,7 @@ class UserResource extends Resource
                     ->label('Nama Lengkap')
                     ->searchable(['nama', 'NIK'])
                     ->searchPrompt('Cari berdasarkan nama / NIK')
-                    ->relationship(name: 'penduduk', titleAttribute: 'nama'),
+                    // ->relationship(name: 'penduduk', titleAttribute: 'nama'),
             ]);
     }
 
