@@ -40,7 +40,8 @@ class UmkmResource extends Resource
                     return \App\Models\Penduduk::pluck('penduduk_id' , 'penduduk_id');
                 })
                 ->relationship(name: 'penduduk', titleAttribute: 'nama')
-                ->searchable()
+                ->searchable(['nama', 'NIK'])
+                ->searchPrompt('Cari berdasarkan nama / NIK')
                 ->label('Pemilik')
                 ->required(),
                 Forms\Components\TextArea::make('deskripsi')

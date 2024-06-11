@@ -12,17 +12,19 @@
     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     </div>
-    <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:max-w-lg mx-auto">
-        <div class="px-4 py-5 sm:px-6 relative">
+    <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg mx-auto relative" id="modalContentUMKM" style="max-width: 400px; margin: 0 auto;">
+        <button type="button" class="absolute top-0 right-0 p-2" onclick="closeModalUMKM()">
+            <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="px-4 py-5 sm:px-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modalTitleUMKM">UMKM</h3>
-            <button type="button" class="absolute top-0 right-0 p-2" onclick="closeModalUMKM()">
-                <svg class="w-6 h-6 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
         </div>
         <div class="px-4 py-5 sm:p-6">
-            <img id="modalImageUMKM" class="w-full h-64 object-cover rounded-md mb-4" src="" alt="UMKM Foto">
+            <div class="overflow-y" id="modalImageContainerUMKM">
+                <img id="modalImageUMKM" class="w-full h-auto object-cover rounded-md mb-4" src="" alt="UMKM Foto">
+            </div>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-2" id="modalAddress"></p>
             <p class="text-sm text-gray-700 dark:text-gray-300 mb-2" id="modalDescription"></p>
         </div>
@@ -100,7 +102,6 @@ fetch('http://127.0.0.1:8000/api/umkm')
         allUmkmContainer.innerHTML = allCardsHTML;
         window.umkmData = data;
 
-        // Add event listeners for all UMKM elements in the allUmkmContainer
         const umkmElements = allUmkmContainer.querySelectorAll('.block');
         umkmElements.forEach((element, index) => {
             element.addEventListener('click', () => {
@@ -133,3 +134,10 @@ function closeAllUmkmModal() {
 }
 
 </script>
+
+<style>
+    #modalImageUMKM {
+        max-height: 400px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
+        overflow-y: auto; /* Tambahkan overflow-y untuk membuat konten yang melebihi tinggi container dapat di-scroll */
+    }
+</style>
